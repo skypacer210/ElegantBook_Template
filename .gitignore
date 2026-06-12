@@ -1,0 +1,20 @@
+# LaTeX build artifacts
+*.aux
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.xdv
+
+# Generated PDFs for this template
+elegantbook-*.pdf
+
+# macOS metadata
+.DS_Store
