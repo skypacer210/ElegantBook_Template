@@ -1,5 +1,6 @@
 # LaTeX build artifacts
 *.aux
+*.bbl
 *.bcf
 *.blg
 *.fdb_latexmk
@@ -15,6 +16,8 @@
 
 # Generated PDFs for this template
 elegantbook-*.pdf
+english-book/*.pdf
+yuwen-book/*.pdf
 
 # macOS metadata
 .DS_Store
