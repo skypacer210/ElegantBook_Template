@@ -1,23 +1,30 @@
 # LaTeX build artifacts
 *.aux
+*.bak
 *.bbl
 *.bcf
 *.blg
 *.fdb_latexmk
 *.fls
+*.fmt
 *.log
+*.nav
 *.out
+*.snm
 *.run.xml
 *.synctex.gz
 *.toc
 *.lof
 *.lot
+*.vrb
 *.xdv
 
 # Generated PDFs for this template
 elegantbook-*.pdf
 english-book/*.pdf
+yuwen-qimo/*.pdf
 yuwen-book/*.pdf
+math-book/*.pdf
 
 # macOS metadata
 .DS_Store
