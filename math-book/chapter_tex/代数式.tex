@@ -1,0 +1,102 @@
+\chapter{代数式}
+
+本章覆盖知识点如下：
+\begin{introduction}
+  \item 代数式
+  \item Ask for help
+  \item Optimization Problem
+  \item Property of Cauchy Series
+  \item Angle of Corner
+\end{introduction}
+
+
+\section{整体代入思维}
+
+
+\begin{definition}[可积性] \label{def:int} 
+设 $ f(x)=\sum\limits_{i=1}^{k} a_i \chi_{A_i}(x)$ 是 $E$ 上的\textbf{非负简单函数}，中文其中 $\{A_1,A_2,\ldots,A_k\}$ 是 $E$ 上的一个可测分割，$a_1,a_2,\ldots,a_k$ 是非负实数。定义 $f$ 在 $E$ 上的积分为 $\int_{a}^b f(x)$
+\begin{equation}
+   \label{inter}
+   \int_{E} f dx = \sum_{i=1}^k a_i m(A_i) \pi \alpha\beta\sigma\gamma\nu\xi\epsilon\varepsilon. \oint_{a}^b\ointop_{a}^b\prod_{i=1}^n
+\end{equation}
+一般情况下 $0 \leq \int_{E} f dx \leq \infty$。若 $\int_{E} f dx < \infty$，则称 $f$ 在 $E$ 上可积。
+\end{definition}
+
+\subsection{整体代入-题目1}
+
+已知三个数 \(a, b, c\)，用 \(\max\{a, b, c\}\) 表示这三个数中最大的数，如果 \(\dfrac{1}{3}(a+b+c)=\max\{a,b,c\}\)，那么：
+
+(1) 当 \(a=3,\ b=2+x,\ c=2x+1\) 时，\(x\) 的值是 \_\_\_\_\_\_；
+
+(2) 当 \(a=\dfrac{x+y}{2},\ b=\dfrac{y+z}{3},\ c=\dfrac{z+x}{7}\)，且 \(x+2y+3z=26\) 时，\(x+y+z\) 的值是 \_\_\_\_\_\_。
+
+\section{代数最值问题}
+
+\begin{proposition}[多知识点融合] \label{pro:max}
+【知识点】代入消元思想、线性函数的值域、线性规划
+
+【分析】XXX.
+\end{proposition}
+
+\subsection{代数最值问题-题目1}
+
+\(A, B, C\) 三种原料每袋的重量（单位：kg）依次是 1, 2, 3，每袋的价格（单位：万元）依次是 3, 2, 5。现生产某种产品需要 \(A, B, C\) 这三种原料的袋数依次为 \(x_1, x_2, x_3\)（\(x_1, x_2, x_3\) 均为正整数），则生产这种产品时需要的这三类原料的总重量 \(W\)（单位：kg）= \_\_\_\_\_\_（用含 \(x_1, x_2, x_3\) 的代数式表示）；为了提升产品的品质，要求 \(W \geq 13\)，当 \(x_1, x_2, x_3\) 的值依次是 \_\_\_\_\_\_ 时，这种产品的成本最低。
+
+（答案见第~\pageref{代数最值问题-题目1}~页）
+
+
+\subsection{代数最值问题-题目2}
+
+
+
+【阅读材料】：
+
+材料一：对于实数 \(x, y\) 定义一种新运算 \(K\)，规定：\(K(x, y) = ax + by\)（其中 \(a, b\) 均为非零常数），等式右边是通常的四则运算。比如：\(K(1, 2) = a + 2b\)；\(K(-2, 3) = -2a + 3b\)。
+
+已知：\(K(1, 2) = 7\)；\(K(-2, 3) = 0\)。
+
+材料二：“已知 \(x, y\) 均为非负数，且满足 \(x + y = 8\)，求 \(2x + 3y\) 的范围”，有如下解法：
+
+\[\because x + y = 8, \quad \therefore x = 8 - y,\]
+\[\because x, y \text{ 是非负数，} \therefore x \geq 0 \text{ 即 } 8 - y \geq 0, \quad \therefore 0 \leq y \leq 8,\]
+\[\because 2x + 3y = 2(8 - y) + 3y = 16 + y, \quad \therefore 16 \leq 16 + y \leq 24, \quad \therefore 16 \leq 2x + 3y \leq 24.\]
+
+【回答问题】：
+
+(1) 求出 \(a, b\) 的值；
+
+(2) 已知 \(x, y\) 均为非负数，\(x + 2y = 10\)，求 \(4x - y\) 的取值范围；
+
+(3) 已知 \(x, y, z\) 都为非负数，\(K(y, z) = 3 + x, \quad K\left(x, \frac{1}{2}y\right) = 4 - 3x\)，求 \(x - 3y + 4z\) 的取值范围。
+
+
+（答案见第~\pageref{代数最值问题-题目2}~页）
+
+
+
+\subsection{代数最值问题-题目3-2023七下·石景山期末}
+
+对于二元一次方程的任意一个解给出如下定义：若 \(x \geq y\)，则称 \(x - y\) 为方程的“关联值”；若 \(x < y\)，则称 \(y - x\) 为方程的“关联值”。已知方程 \(x + y = 3\)。
+
+\begin{enumerate}
+    \item 写出方程 \(x + y = 3\) 的一个解，并指明此时方程的“关联值”；
+    \item 若“关联值”为 \(4\)，写出所有满足条件的解；
+    \item 直接写出方程 \(x + y = 3\) 的最小“关联值”；当“关联值”为 \(1\) 时，直接写出 \(x\) 的取值范围。
+\end{enumerate}
+
+（答案见第~\pageref{代数最值问题-题目3-2023七下·石景山期末}~页）
+
+
+\subsection{代数最值问题-题目3-2025北京三帆中学初一下期中第2题}
+
+已知关于 \(x, y\) 的方程组
+\[
+\begin{cases}
+x + 2y = m + 5 \\
+2x + y = m + 4
+\end{cases}
+\]
+其中 \(x, y\) 为非负数，若 \(S = x - y\)，则 \(S\) 的取值范围是 \_\_\_\_\_\_\_\_\_\_。
+
+
+（答案见第~\pageref{代数最值问题-题目3-2025北京三帆中学初一下期中第2题}~页）
