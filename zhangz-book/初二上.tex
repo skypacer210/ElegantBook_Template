@@ -1,0 +1,376 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\title{清华附中初二上数学练习册}
+\subtitle{知识点题库整理}
+
+\author{齐齐爸}
+\institute{珠江骏景课题组}
+\date{April 9, 2026}
+\version{4.3}
+\bioinfo{自定义}{信息}
+
+\extrainfo{不要以为抹消过去，重新来过，即可发生什么改变。—— 比企谷八幡}
+
+\setcounter{tocdepth}{3}
+
+\logo{logo-blue.png}
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 添加 \usepackage{float}，以启用 [H] 选项。
+\usepackage{float}
+
+\usepackage{ctex}      % 中文支持
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}  % 图片插入
+
+% ============================================================
+% 章节题目公共排版命令
+%
+% 图片命令
+% - \questionimage[<图片参数>]{<文件>}
+%   用于“左文字右图片”结构里的右侧题图。
+%   默认限制高度，避免题图过高。
+% - \centerquestionimage[<图片参数>]{<盒子宽度>}{<文件>}
+%   用于居中单图的底层命令。
+% - \rightquestionimage[<图片参数>]{<盒子宽度>}{<文件>}
+%   用于右对齐单图的底层命令。
+% - \blankquestionimage[<宽度>]{<文件>}
+% - \blankrightquestionimage[<宽度>]{<文件>}
+% - \solutionquestionimage[<宽度>]{<文件>}
+% - \solutionrightquestionimage[<宽度>]{<文件>}
+%   按题型约定默认尺寸的公共命令，后续维护优先使用这一组。
+%
+% 图组命令
+% - \begin{questionimagegroup} ... \end{questionimagegroup}
+%   用于多图并排容器。
+% - \questionimageitem[<图片参数>]{<盒子宽度>}{<文件>}{<图注>}
+%   用于图组中的单张图片，图注可写 {} 表示留空。
+% - \blankdoubleimageitem[<宽度>]{<文件>}{<图注>}
+% - \blanktripleimageitem[<宽度>]{<文件>}{<图注>}
+% - \solutiondoubleimageitem[<宽度>]{<文件>}{<图注>}
+% - \solutiontripleimageitem[<宽度>]{<文件>}{<图注>}
+%   用于填空题 / 解答题双图、三图的常用尺寸。
+% - \questionimagegap[<间距>]
+%   用于图组中图片间距，默认 0.02\textwidth。
+%
+% 题目列表命令
+% - \questionlist[<起始题号>]  选择题外层列表
+% - \blanklist[<起始题号>]     填空题外层列表
+% - \solutionlist[<起始题号>]  解答题外层列表
+% - \optionlist                选择题 A/B/C/D 选项列表
+%
+% 推荐尺寸
+% - 选择题左文右图：右侧题图保持默认即可。
+% - 填空题 / 解答题单图：建议优先使用 0.35\textwidth 左右。
+% - 填空题 / 解答题双图：建议每张 0.32\textwidth 左右。
+% - 填空题 / 解答题三图：建议每张 0.28\textwidth 左右。
+%
+% 模板库
+%
+% 选择题模板
+% 1. 纯文字选择题：
+%    \questionlist
+%    \item 题干……
+%    \optionlist
+%    \item A
+%    \item B
+%    \item C
+%    \item D
+%    \end{enumerate}
+%    \end{enumerate}
+%
+% 2. 左文字右图片选择题：
+%    \questionlist
+%    \item 题干……
+%    \begin{questionwithimage}[width=0.9\linewidth]{foo.png}
+%    \optionlist
+%    \item A
+%    \item B
+%    \item C
+%    \item D
+%    \end{enumerate}
+%    \end{questionwithimage}
+%    \end{enumerate}
+%
+% 填空题模板
+% 1. 从第 9 题开始的纯文字填空题：
+%    \blanklist[9]
+%    \item 第 9 题……
+%    \item 第 10 题……
+%    \item 第 11 题……
+%    \end{enumerate}
+%
+% 2. 居中单图填空题：
+%    \blanklist[9]
+%    \item 题干……
+%    \blankquestionimage{foo.png}
+%    \end{enumerate}
+%
+% 3. 右对齐单图填空题：
+%    \blanklist[9]
+%    \item 题干……
+%    \blankrightquestionimage{foo.png}
+%    \end{enumerate}
+%
+% 4. 多图并排填空题：
+%    \blanklist[9]
+%    \item 题干……
+%    \begin{questionimagegroup}
+%    \blankdoubleimageitem{a.png}{图1}
+%    \questionimagegap
+%    \blankdoubleimageitem{b.png}{图2}
+%    \end{questionimagegroup}
+%    \end{enumerate}
+%
+% 5. 特殊高度限制的双图填空题：
+%    \blanklist[9]
+%    \item 题干……
+%    \begin{questionimagegroup}
+%    \questionimageitem[width=\linewidth,height=0.22\textheight,keepaspectratio]{0.28\textwidth}{a.png}{}
+%    \questionimagegap[0.04\textwidth]
+%    \questionimageitem[width=\linewidth,height=0.22\textheight,keepaspectratio]{0.28\textwidth}{b.png}{}
+%    \end{questionimagegroup}
+%    \end{enumerate}
+%
+% 6. 图注留空填空题：
+%    \blanklist[9]
+%    \item 题干……
+%    \begin{questionimagegroup}
+%    \blankdoubleimageitem{foo.png}{}
+%    \end{questionimagegroup}
+%    \end{enumerate}
+%
+% 解答题模板
+% 1. 从第 15 题开始的纯文字解答题：
+%    \solutionlist[15]
+%    \item 证明题或计算题……
+%    \end{enumerate}
+%
+% 2. 带居中单图的解答题：
+%    \solutionlist[15]
+%    \item 证明题或计算题……
+%    \solutionquestionimage{foo.png}
+%    \end{enumerate}
+%
+% 3. 带多图并排的解答题：
+%    \solutionlist[15]
+%    \item 证明题或计算题……
+%    \begin{questionimagegroup}
+%    \solutiondoubleimageitem{a.png}{图1}
+%    \questionimagegap
+%    \solutiondoubleimageitem{b.png}{图2}
+%    \end{questionimagegroup}
+%    \end{enumerate}
+% ============================================================
+\graphicspath{{figure/}{image/}{zhangz-book/figure/}{zhangz-book/image/}}
+
+% 图片命令：默认参数
+% `questionimage` 默认限制高度，`center/rightquestionimage` 默认按盒子宽度缩放。
+\newcommand{\questionimagedefaultoptions}{width=\linewidth,height=0.22\textheight,keepaspectratio}
+\newcommand{\centerquestionimagedefaultoptions}{width=\linewidth}
+\newcommand{\blankquestionimagewidth}{0.35\textwidth}
+\newcommand{\blankdoubleimagewidth}{0.32\textwidth}
+\newcommand{\blanktripleimagewidth}{0.28\textwidth}
+\newcommand{\solutionquestionimagewidth}{0.35\textwidth}
+\newcommand{\solutiondoubleimagewidth}{0.32\textwidth}
+\newcommand{\solutiontripleimagewidth}{0.28\textwidth}
+
+% 图片命令：左文字右图片中的右侧题图
+\newcommand{\questionimage}[2][]{%
+  \vspace{0pt}%
+  \begin{center}
+    \if\relax\detokenize{#1}\relax
+      \expandafter\includegraphics\expandafter[\questionimagedefaultoptions]{#2}%
+    \else
+      \includegraphics[#1]{#2}%
+    \fi
+  \end{center}
+}
+
+% 图片命令：左文字右图片题型
+% 可选参数会透传给右侧图片，例如：
+% \begin{questionwithimage}[width=0.85\linewidth,height=0.26\textheight,keepaspectratio]{foo.png}
+%   ...
+% \end{questionwithimage}
+\newenvironment{questionwithimage}[2][]{%
+  \def\questionwithimageoptions{#1}%
+  \def\questionwithimagefile{#2}%
+  \par\smallskip\noindent
+  \begin{minipage}[t]{0.64\linewidth}
+  \vspace{0pt}
+}{%
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.32\linewidth}
+  \vspace{0pt}%
+  \begin{center}
+    \ifx\questionwithimageoptions\empty
+      \expandafter\includegraphics\expandafter[\questionimagedefaultoptions]{\questionwithimagefile}%
+    \else
+      \expandafter\includegraphics\expandafter[\questionwithimageoptions]{\questionwithimagefile}%
+    \fi
+  \end{center}
+  \end{minipage}
+}
+
+% 图片命令：居中单图
+% 参数顺序：图片选项、外层盒子宽度、图片文件。
+\newcommand{\centerquestionimage}[3][]{%
+  \begin{center}
+  \begin{minipage}[b]{#2}
+  \centering
+  \if\relax\detokenize{#1}\relax
+    \expandafter\includegraphics\expandafter[\centerquestionimagedefaultoptions]{#3}%
+  \else
+    \includegraphics[#1]{#3}%
+  \fi
+  \end{minipage}
+  \end{center}
+}
+
+% 图片命令：右对齐单图
+% 适合保留旧稿里“题干后右侧跟一张图”的阅读节奏。
+\newcommand{\rightquestionimage}[3][]{%
+  \begin{flushright}
+  \begin{minipage}[b]{#2}
+  \centering
+  \if\relax\detokenize{#1}\relax
+    \expandafter\includegraphics\expandafter[\centerquestionimagedefaultoptions]{#3}%
+  \else
+    \includegraphics[#1]{#3}%
+  \fi
+  \end{minipage}
+  \end{flushright}
+}
+
+% 图片命令：按题型约定尺寸的单图包装
+% 可选参数仅用于覆盖默认宽度；若需要高度限制等特殊参数，继续使用底层命令。
+\NewDocumentCommand{\blankquestionimage}{O{\blankquestionimagewidth} m}{%
+  \centerquestionimage[width=#1]{#1}{#2}%
+}
+\NewDocumentCommand{\blankrightquestionimage}{O{\blankquestionimagewidth} m}{%
+  \rightquestionimage[width=#1]{#1}{#2}%
+}
+\NewDocumentCommand{\solutionquestionimage}{O{\solutionquestionimagewidth} m}{%
+  \centerquestionimage[width=#1]{#1}{#2}%
+}
+\NewDocumentCommand{\solutionrightquestionimage}{O{\solutionquestionimagewidth} m}{%
+  \rightquestionimage[width=#1]{#1}{#2}%
+}
+
+% 图组命令：多图并排容器
+\newenvironment{questionimagegroup}{%
+  \begin{center}
+}{%
+  \end{center}
+}
+
+% 图组命令：图组中的单张图片
+% 图注可传空字符串 {}，表示只显示图片不显示图注。
+\newcommand{\questionimageitem}[4][]{%
+  \begin{minipage}[b]{#2}
+  \centering
+  \if\relax\detokenize{#1}\relax
+    \expandafter\includegraphics\expandafter[\centerquestionimagedefaultoptions]{#3}%
+  \else
+    \includegraphics[#1]{#3}%
+  \fi
+  \if\relax\detokenize{#4}\relax\else
+    \par\smallskip
+    {\centering\small #4\par}
+  \fi
+  \end{minipage}
+}
+
+% 图组命令：按题型约定尺寸的双图、三图包装
+\NewDocumentCommand{\blankdoubleimageitem}{O{\blankdoubleimagewidth} m m}{%
+  \questionimageitem{#1}{#2}{#3}%
+}
+\NewDocumentCommand{\blanktripleimageitem}{O{\blanktripleimagewidth} m m}{%
+  \questionimageitem{#1}{#2}{#3}%
+}
+\NewDocumentCommand{\solutiondoubleimageitem}{O{\solutiondoubleimagewidth} m m}{%
+  \questionimageitem{#1}{#2}{#3}%
+}
+\NewDocumentCommand{\solutiontripleimageitem}{O{\solutiontripleimagewidth} m m}{%
+  \questionimageitem{#1}{#2}{#3}%
+}
+
+% 图组命令：图组间距
+\newcommand{\questionimagegap}[1][0.02\textwidth]{%
+  \hspace{#1}%
+}
+
+% 题目列表命令
+% 可选参数表示起始题号，例如 \blanklist[9]。
+\newcommand{\questionlist}[1][1]{%
+  \begin{enumerate}[label=\arabic*., leftmargin=*, start=#1, itemsep=0.5\baselineskip]
+}
+\newcommand{\blanklist}[1][1]{%
+  \begin{enumerate}[label=\arabic*., leftmargin=*, start=#1, itemsep=0.5\baselineskip]
+}
+\newcommand{\solutionlist}[1][1]{%
+  \begin{enumerate}[label=\arabic*., leftmargin=*, start=#1, itemsep=0.8\baselineskip]
+}
+\newcommand{\optionlist}{%
+  \begin{enumerate}[label=(\Alph*), itemsep=0.2\baselineskip]
+}
+\makeatletter
+% 兼容从项目根目录或 zhangz-book 目录发起编译。
+\def\input@path{{./}{zhangz-book/}}
+\makeatother
+
+
+% \usepackage{wrapfig}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+
+
+%第十二章 平面直角坐标系与几何变换
+
+% 12.1 平面直角坐标系
+
+% 12.2 用坐标表示位置
+
+% 12.3 平面直角坐标系中的基本公式
+
+% 12.4 平移
+
+\include{chapter_tex/12.4平移.tex}
+
+\include{chapter_tex/12.5用坐标表示平移.tex}
+
+\include{chapter_tex/12.6轴对称与轴对称图形.tex}
+
+\include{chapter_tex/12.7线段的垂直平分线-1.tex}
+\include{chapter_tex/12.7线段的垂直平分线-2.tex}
+
+\include{chapter_tex/12.8坐标系中的轴对称.tex}
+
+\include{chapter_tex/12.9等腰三角形.tex}
+
+\include{chapter_tex/12.10-1等腰三角形判断.tex}
+\include{chapter_tex/12.10-2等腰三角形的性质与判定.tex}
+
+\include{chapter_tex/12.11-1等腰三角形性质.tex}
+\include{chapter_tex/12.11-2等边三角形的判定.tex}
+
+\include{chapter_tex/12.11-3等边三角形综合.tex}
+
+
+\end{document}

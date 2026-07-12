@@ -26,6 +26,18 @@ english-book/*.pdf
 yuwen-qimo/*.pdf
 yuwen-book/*.pdf
 math-book/*.pdf
+zhangz-book/*.pdf
+
+# Local tool caches / generated OCR artifacts
+tool/output/
+tool/cache/
+tool/vendor/mineru_runtime/
+tool/*.jpg
+tool/*.png
+tool/*.jpeg
+tool/*.pdf
+*.bbl-SAVE-ERROR
+*.bcf-SAVE-ERROR
 
 # macOS metadata
 .DS_Store
