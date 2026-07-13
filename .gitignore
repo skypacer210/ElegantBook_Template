@@ -38,6 +38,19 @@ tool/*.jpeg
 tool/*.pdf
 *.bbl-SAVE-ERROR
 *.bcf-SAVE-ERROR
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.run.xml
+*.bcf
+*.pdf
+math-book/tool/images/
+math-book/tool/*.png
+math-book/tool/*.jpg
+math-book/tool/*.jpeg
+math-book/tool/*.pdf
 
 # macOS metadata
 .DS_Store
