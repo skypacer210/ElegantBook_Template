@@ -215,6 +215,33 @@ When business data flows enter the intelligent WAN edge, devices perform deep in
 
 Traditional networks predominantly rely on soft isolation techniques, wherein best-effort traffic can inadvertently exhaust shared buffer resources during severe congestion, thereby compromising high-priority transmissions. To satisfy the stringent zero-packet-loss requirements inherent to large-scale AI training, this approach integrates physical-layer slice sub-interface technology within the Enhanced VPN (VPN+) framework to achieve strict hardware-level isolation [19]. Through underlying hardware mechanisms, a single high-speed physical link is partitioned into mutually independent logical sub-interfaces. Each slice is deterministically bound to dedicated hardware queue resources and guaranteed physical bandwidth within the NPU. Consequently, even under conditions where background traffic experiences extreme congestion and packet loss, the dedicated slices accommodating critical AI workloads are able to sustain deterministic ultra-low latency and absolute zero packet loss.
 
+% 修改
+
+As detailed in Table 2, the hardware-level slice sub-interface mechanism fundamentally decouples high-priority AI workloads from competing background traffic, guaranteeing physical hard isolation and compliance fencing with minimal encapsulation overhead.
+
+\begin{table}[h]
+\caption{\label{tab:architecture_comparison}Comparison of isolation paradigms, encapsulation overhead, and compliance capabilities.}
+\begin{center}
+\lineup
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.8cm}
+                >{\raggedright\arraybackslash}p{2.5cm}
+                >{\raggedright\arraybackslash}p{4.2cm}
+                >{\raggedright\arraybackslash}p{4.5cm}@{}}
+\br
+\centering Dimension / Metric & \centering Legacy Best-Effort IP & \centering Traditional DiffServ / Soft Slicing & \centering Proposed Architecture (APN6 + Slice Sub-interface) \tabularnewline
+\mr
+Buffer Sharing Mode & Completely shared buffer & Dynamically shared buffer (WRED/Strict Priority) & Dedicated physical hardware queues per slice sub-interface \\
+Resource Guarantee & Best-effort, no SLA & Statistical multiplexing, vulnerable under Incast & Deterministic guaranteed bandwidth \& zero packet loss \\
+Cross-Tenant Interference & Severe (victim flow degradation) & Moderate (buffer starvation during congestion) & Strictly eliminated (hard physical-level fencing) \\
+Application Awareness & None (pure 5-tuple hash) & Coarse-grained (3-bit DSCP/TOS) & Fine-grained (APN ID in IPv6 HBH/DOH extension headers) \\
+Encapsulation Overhead & 0 Bytes & 0 Bytes & 8--16 Bytes (IPv6 HBH/DOH Option) \\
+Path Compliance / Fencing & Unaware, shortest path only & Static VRF-based routing & Dynamic CSPF explicit path avoiding untrusted nodes \\
+\br
+\end{tabular}
+\end{center}
+\end{table}
+
 
 \subsection{Compliant Routing and Data Fencing Based on APN}
 
