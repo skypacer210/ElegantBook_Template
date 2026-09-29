@@ -1,0 +1,29 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{enumitem}
+
+\begin{document}
+
+\section*{Response to Reviewer Comments}
+
+\textbf{Reviewer Comment:} \\
+\textit{``It is recommended that relevant tabular data be incorporated into Sections 4 and 5 to enhance the clarity and empirical support of the analysis.''}
+
+\vspace{0.5em}
+
+\textbf{Response:} \\
+We sincerely thank the reviewer for this constructive and insightful recommendation. In the revised manuscript, we have enriched Sections 4 and 5 by adding two comprehensive tables (Table 3 and Table 4) along with relevant textual discussions to provide clear empirical and quantitative support for our theoretical modeling and architectural design:
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{Addition to Section 4:}
+    We have incorporated Table 3 (``Comparison of buffer implications and operational behavior across varying transmission distances''). This table quantifies the theoretical in-flight blind-mode volume ($V_{blind}$) across different transmission scales (from Intra-DC up to 500-km WAN links) and contrasts the failure modes of legacy IEEE 802.1Qbb PFC against our proposed tenant-level SRv6 End.X.PFC signaling. This provides a clear, quantitative foundation for the buffer dimensioning and threshold provisioning ($Q_{threshold}$) detailed in Eq. (4).
+
+    \item \textbf{Addition to Section 5:}
+    We have added Table 4 (``Comparison of isolation paradigms, encapsulation overhead, and compliance capabilities''). This table presents a structured multi-dimensional comparison between conventional Best-Effort IP, traditional DiffServ/soft slicing, and our proposed APN6-aware slice sub-interface framework. It empirically articulates the trade-offs regarding header encapsulation overhead (IPv6 HBH/DOH options), hardware queue resource partitioning, victim-flow isolation, and dynamic CSPF-based data fencing.
+\end{enumerate}
+
+The corresponding text in Sections 4.1, 4.3, 5.2, and 5.3 has also been updated to cross-reference and thoroughly analyze these tables. We believe these additions substantially enhance the clarity, rigor, and empirical backing of both sections.
+
+\end{document}
