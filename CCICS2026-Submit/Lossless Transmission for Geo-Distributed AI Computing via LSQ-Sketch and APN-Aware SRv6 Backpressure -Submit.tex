@@ -132,18 +132,18 @@ V_{blind} = C \times RTT
 To quantitatively demonstrate the buffer implications under long WAN latencies, Table 1 summarizes the required blind-zone buffering across varying transmission distances and contrasts the operational behavior of standard PFC with our proposed End.X.PFC signaling.
 
 \begin{table}[h]
-\caption{\label{tab3}BDP Blind-zone buffer requirements and backpressure overhead across varying WAN distances.}
+\caption{\label{tab3}Comparison of buffer implications and operational behavior across varying transmission distances.}
 \begin{center}
 \lineup
 \small
 \begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}
                 >{\centering\arraybackslash}p{1.2cm}
                 >{\centering\arraybackslash}p{1.3cm}
-                >{\raggedright\arraybackslash}p{1.7cm}
+                >{\raggedright\arraybackslash}p{1.75cm}
                 >{\raggedright\arraybackslash}p{3.7cm}
-                >{\raggedright\arraybackslash}p{3.9cm}@{}}
+                >{\raggedright\arraybackslash}p{3.85cm}@{}}
 \br
-\centering WAN Link Distance (km) & RTT ($\mu$s) & Link Bandwidth & \centering Theoretical $V_{blind}$ (BDP) & \centering Traditional PFC Behavior & \centering Proposed SRv6 End.X.PFC ($Q_{threshold}$) \tabularnewline
+\centering WAN Link Distance (km) & \centering RTT ($\mu$s) & \centering Link Bandwidth & \centering Theoretical $V_{blind}$ (BDP) & \centering Traditional PFC Behavior & \centering Proposed SRv6 End.X.PFC ($Q_{threshold}$) \tabularnewline
 \mr
 0.1 (Intra-DC) & $\approx$10 & 100 Gbps & $\approx$125 KB & Port-level PAUSE, Head-of-Line (HoL) blocking risk & Flow-level exact backpressure ($<$128 KB) \\
 50 (Metro-WAN) & $\approx$500 & 100 Gbps & $\approx$6.25 MB & Buffer overflow / Deadlock propagation & Provisioned queue buffer ($\approx$6.5 MB), isolated tenant queue \\
@@ -216,7 +216,6 @@ When business data flows enter the intelligent WAN edge, devices perform deep in
 Traditional networks predominantly rely on soft isolation techniques, wherein best-effort traffic can inadvertently exhaust shared buffer resources during severe congestion, thereby compromising high-priority transmissions. To satisfy the stringent zero-packet-loss requirements inherent to large-scale AI training, this approach integrates physical-layer slice sub-interface technology within the Enhanced VPN (VPN+) framework to achieve strict hardware-level isolation [19]. Through underlying hardware mechanisms, a single high-speed physical link is partitioned into mutually independent logical sub-interfaces. Each slice is deterministically bound to dedicated hardware queue resources and guaranteed physical bandwidth within the NPU. Consequently, even under conditions where background traffic experiences extreme congestion and packet loss, the dedicated slices accommodating critical AI workloads are able to sustain deterministic ultra-low latency and absolute zero packet loss.
 
 % 修改
-
 As detailed in Table 2, the hardware-level slice sub-interface mechanism fundamentally decouples high-priority AI workloads from competing background traffic, guaranteeing physical hard isolation and compliance fencing with minimal encapsulation overhead.
 
 \begin{table}[h]
