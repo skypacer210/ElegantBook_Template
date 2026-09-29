@@ -8,7 +8,7 @@
 \title{Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure}
 
 
-\author{Sheng Haiyan$^1$, Yang Yong$^2$, Liu Ye$^1$,Yan Jiayao$^1$, Fei Shuoyao$^1$}
+\author{Sheng Haiyan$^1$, Yang Yong$^{2,*}$, Liu Ye$^1$, Yan Jiayao$^1$, Fei Shuoyao$^1$}
 
 
 \address{$^1$ Century College, Beijing University of Posts and Telecommunications, Beijing, 100876, China}
@@ -45,7 +45,7 @@ The proposed architecture consists of three tightly coupled layers, whose core d
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=30pc]{fig1.png}
+\includegraphics[width=30pc]{fig1.jpg}
 \end{center}
 \caption{\label{fig1}Overall Architecture of the Mechanism}
 \end{figure}
@@ -94,7 +94,7 @@ Once elephant flows are identified via the hardware-traffic co-design, the key c
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=30pc]{fig2.png}
+\includegraphics[width=30pc]{fig2.jpg}
 \end{center}
 \caption{\label{fig2}Comparison of Load Balancing Schemas: ECMP vs Micro-flow Awareness}
 \end{figure}
@@ -132,7 +132,7 @@ V_{blind} = C \times RTT
 To quantitatively demonstrate the buffer implications under long WAN latencies, Table 1 summarizes the required blind-zone buffering across varying transmission distances and contrasts the operational behavior of standard PFC with our proposed End.X.PFC signaling.
 
 \begin{table}[h]
-\caption{\label{tab3}Comparison of buffer implications and operational behavior across varying transmission distances.}
+\caption{\label{tab1}BDP Blind-zone buffer requirements and backpressure overhead across varying WAN distances.}
 \begin{center}
 \lineup
 \small
@@ -204,7 +204,7 @@ When business data flows enter the intelligent WAN edge, devices perform deep in
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=30pc]{fig3.png}
+\includegraphics[width=30pc]{fig3.jpg}
 \end{center}
 \caption{\label{fig3}APN6 Application-aware Encapsulation and Synergy Workflow}
 \end{figure}
@@ -276,7 +276,7 @@ The evaluation framework defines three controlled experimental groups:
 
 
 \begin{table}[h]
-\caption{\label{tab1}Throughput and computing efficiency comparison of different scale large models (LLaMa/GPT) over a 100-km WAN.}
+\caption{\label{tab3}Throughput and computing efficiency comparison of different scale large models (LLaMa/GPT) over a 100-km WAN.}
 \begin{center}
 \lineup
 \small
@@ -305,7 +305,7 @@ GPT-175B & Proposed Mechanism & 24.6 & $-$1.99\% \\
 \end{table}
 
 
-The detailed experimental results in Table 1 indicate the following observations. For billion-parameter-scale models such as LLaMA-7B and LLaMA-13B, the Legacy WAN exhibits severe performance degradation due to hash-induced traffic polarization and delayed PFC congestion control. These factors lead to substantial GPU underutilization, with computational efficiency losses exceeding 30\%.
+The detailed experimental results in Table 3 indicate the following observations. For billion-parameter-scale models such as LLaMA-7B and LLaMA-13B, the Legacy WAN exhibits severe performance degradation due to hash-induced traffic polarization and delayed PFC congestion control. These factors lead to substantial GPU underutilization, with computational efficiency losses exceeding 30\%.
 
 
 For ultra-large-scale models such as GPT-175B, the problem is further amplified by pronounced Incast traffic patterns during gradient synchronization. Under such conditions, the Legacy WAN exhibits severe system-level performance degradation, with throughput dropping by more than 74\%, which in turn leads to a multi-fold increase in JCT.
@@ -348,7 +348,7 @@ Proposed (HW Sketch + UCMP) & 90.2\% (Extremely High Efficiency) & Reduced by $\
 \end{table}
 
 
-As shown in Table 2, conventional ECMP routing under heavy elephant-flow workloads causes rapid queue buildup on core links, reaching peak depths of approximately 4.8M packets. This congestion frequently triggers upstream PAUSE frames, creating a feedback loop that severely inflates P99 tail latency.
+As shown in Table 4, conventional ECMP routing under heavy elephant-flow workloads causes rapid queue buildup on core links, reaching peak depths of approximately 4.8M packets. This congestion frequently triggers upstream PAUSE frames, creating a feedback loop that severely inflates P99 tail latency.
 
 
 In contrast, by leveraging the in-network LSQ-Sketch matrix for millisecond-level dynamic flow slicing, our mechanism elevates link utilization beyond 90\% while reducing peak queue depth by $\sim$68\% (to under 1.5M packets). This suppression of queue occupancy and P99 latency minimizes the network-layer ``straggler'' effect, bridging the compute-communication gap for distributed training.
