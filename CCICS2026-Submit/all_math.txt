@@ -1,0 +1,103 @@
+=== ALL paragraphs containing MATH elements ===
+Math paragraphs found: [25, 26, 27, 32, 33, 38, 47]
+Total 7 paragraphs
+
+
+[P 25] [正文2]
+  TXT: 'In distributed training, gradient synchronization mechanisms'
+  TXT: 'dominate network '
+  TXT: 'behavior.'
+  TXT: ' Assuming'
+  TXT: ' the model parameter size is '
+  MATH: ['P']
+  TXT: ' and the total number of GPU computing nodes is'
+  MATH: ['W']
+  TXT: ', during a single Ring All-Reduce iteration, the data volume each node needs to send and receive theoretically reaches up to'
+  MATH: ['2(W-1)', 'W', 'P'] [FRACTION]
+  TXT: '['
+  TXT: '12'
+  TXT: ']'
+  TXT: '. '
+  TXT: 'Synchronous collective communication across thousands of GPUs triggers severe many-to-one Incast microbursts, characterized by pronounced ON/OFF patterns and strong temporal locality. At Tbps WAN line rates, directly applying traditional Sketch algorithms causes a few elephant flows to '
+  TXT: 'repeatedly hit specific SRAM addresses within microseconds, resulting in severe read-write dependency conflicts and throughput degradation [13]. To address this, our queuing theory models demonstrate that the highly time-clustered nature of LLM elephant flows allows even a minimal-capacity front-end micro-cache to achieve an exceptionally high aggregation hit rate.'
+
+[P 26] [正文2]
+  TXT: 'When consecutive burst packets with the same five-tuple identifier '
+  MATH: ['f']
+  TXT: ' arrive, the micro-cache first locally accumulates their byte length'
+  MATH: ['v', 'agg', '=∑', 'v', 'i'] [SUBSCRIPT]
+  TXT: '. Concurrently, the algorithm designs an LSQ architecture of depth '
+  MATH: ['K']
+  TXT: '.'
+  TXT: ' Only when a hash collision occurs in the micro-cache or the preset clock cycle '
+  MATH: ['T', 'flush'] [SUBSCRIPT]
+  TXT: ' is exceeded will the pre-aggregated '
+  MATH: ['v', 'agg'] [SUBSCRIPT]
+  TXT: ' be submitted as an atomic instruction to the backend '
+  MATH: ['d×w']
+  TXT: ' 2D SRAM counter matrix '
+  MATH: ['C']
+  TXT: ' for concurrent execution:'
+
+[P 27] [正文2]
+  TXT: 'Through this co-design highly adapted to the AI '
+  TXT: 'ON/OFF'
+  TXT: ' burst characteristics, the system not only thoroughly resolves the read-write hazards caused by frequent SRAM access but also '
+  TXT: 'reduces'
+  TXT: 'dynamic power consumption during the peak of AI training by over 40% under extremely constrained chip areas. This hardware-traffic co-design model enables the NPU to output the estimated size of the elephant flow '
+  MATH: ['S', '(', 'f', ')']
+  TXT: ' with zero delay:'
+
+[P 32] [正文2]
+  TXT: 'Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be '
+  MATH: ['P={', 'p', '1', ',', 'p', '2', ',…,', 'p', 'k', '}'] [SUBSCRIPT]
+  TXT: ', with the measured '
+  TXT: 'RTT'
+  TXT: ' of each path '
+  TXT: ' denoted as '
+  MATH: ['RTT(', 'p', 'i', ')'] [SUBSCRIPT]
+  TXT: '. To ensure that two consecutive packets forwarded via different paths within the same TCP/RDMA connection do not arrive out-of-order and trigger Go-Back-N retransmissions, the algorithm must strictly adhere to the Flowlet splitting gap th'
+  TXT: 'eoretical boundary'
+  TXT: ' ['
+  TXT: '14'
+  TXT: ']'
+  TXT: '.'
+  TXT: 'The time interva'
+  TXT: 'l '
+  MATH: ['Δ', 'T']
+  TXT: ' between consecutive packets '
+  MATH: ['Pk', 't', 'n'] [SUBSCRIPT]
+  TXT: ' and '
+  MATH: ['Pk', 't', 'n-1'] [SUBSCRIPT]
+  TXT: ' of the same flow must be strictly greater than the maximum relative one-way delay difference among the candidate paths in the WAN:'
+
+[P 33] [正文2]
+  TXT: 'The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3) is met, a safe new Flowlet splitting point is deemed to have occurred.'
+  TXT: 'Subsequently, combined with the underlying SRv6 G-SID list, the UCMP algorithm is utilized for fine-grained scheduling. The probability weight '
+  MATH: ['W(', 'p', 'm', ')'] [SUBSCRIPT]
+  TXT: ' for selecting candidate path '
+  MATH: ['p', 'm'] [SUBSCRIPT]
+  TXT: ' to carry the Flowlet strictly follows the proportional distribution'
+  TXT: 'of the real-time available bandwidth '
+  MATH: ['B', 'res'] [SUBSCRIPT]
+  TXT: ' across the entire network:'
+
+[P 38] [First Paragraph]
+  TXT: 'In high-speed WANs, the long RTT significantly increases the BDP. We define the interval from when congestion occurs and backpressure signaling is initiated to when the upstream source receives the signal and stops transmission as the reaction time. Let the link capacity be '
+  MATH: ['C']
+  TXT: '. During Blind Mode, a substantial volume of in-flight packets continues to flow into the node. The theoretical lower bound of this volume'
+  MATH: ['V', 'blind'] [SUBSCRIPT]
+  TXT: ' is given by:'
+
+[P 47] [正文2]
+  TXT: '2) '
+  TXT: 'Congestion Detection: '
+  TXT: 'The downstream NPU monitors per-tenant queue occupancy ('
+  MATH: ['Q', 'len'] [SUBSCRIPT]
+  TXT: '). An alarm triggers when '
+  MATH: ['Q', 'len'] [SUBSCRIPT]
+  TXT: 'reaches a critical threshold ('
+  MATH: ['Q', 'threshold'] [SUBSCRIPT]
+  TXT: '), which is explicitly provisioned to absorb the blind-mode in-flight traffic ('
+  MATH: ['V', 'blind'] [SUBSCRIPT]
+  TXT: ') dictated by the WAN BDP.'

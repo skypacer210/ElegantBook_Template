@@ -1,0 +1,130 @@
+
+======================================================================
+P25 [正文2]
+Plain text: 'In distributed training, gradient synchronization mechanisms dominate network behavior. Assuming the model parameter size is  and the total number of GPU computing nodes is , during a single Ring All-Reduce iteration, the data volume each node needs to send and receive theoretically reaches up to [12]. Synchronous collective communication across thousands of GPUs triggers severe many-to-one Incast microbursts, characterized by pronounced ON/OFF patterns and strong temporal locality. At Tbps WAN line rates, directly applying traditional Sketch algorithms causes a few elephant flows to repeatedly hit specific SRAM addresses within microseconds, resulting in severe read-write dependency conflicts and throughput degradation [13]. To address this, our queuing theory models demonstrate that the highly time-clustered nature of LLM elephant flows allows even a minimal-capacity front-end micro-cache to achieve an exceptionally high aggregation hit rate.'
+----------------------------------------------------------------------
+  [TXT] 'In distributed training, gradient synchronization mechanisms'
+  [TXT] 'dominate network '
+  [TXT] 'behavior.'
+  [TXT] ' Assuming'
+  [TXT] ' the model parameter size is '
+  [MATH] texts=['P'], structs=[]
+  [TXT] ' and the total number of GPU computing nodes is'
+  [MATH] texts=['W'], structs=[]
+  [TXT] ', during a single Ring All-Reduce iteration, the data volume each node needs to send and receive theoretically reaches up to'
+  [MATH] texts=['2(W-1)', 'W', 'P'], structs=['f']
+  [TXT] '['
+  [TXT] '12'
+  [TXT] ']'
+  [TXT] '. '
+  [TXT] 'Synchronous collective communication across thousands of GPUs triggers severe many-to-one Incast microbursts, characterized by pronounced ON/OFF patterns and strong temporal locality. At Tbps WAN line rates, directly applying traditional Sketch algorithms causes a few elephant flows to '
+  [TXT] 'repeatedly hit specific SRAM addresses within microseconds, resulting in severe read-write dependency conflicts and throughput degradation [13]. To address this, our queuing theory models demonstrate that the highly time-clustered nature of LLM elephant flows allows even a minimal-capacity front-end micro-cache to achieve an exceptionally high aggregation hit rate.'
+
+======================================================================
+P26 [正文2]
+Plain text: 'When consecutive burst packets with the same five-tuple identifier  arrive, the micro-cache first locally accumulates their byte length . Concurrently, the algorithm designs an LSQ architecture of depth . Only when a hash collision occurs in the micro-cache or the preset clock cycle  is exceeded will the pre-aggregated  be submitted as an atomic instruction to the backend  2D SRAM counter matrix  for concurrent execution:'
+----------------------------------------------------------------------
+  [TXT] 'When consecutive burst packets with the same five-tuple identifier '
+  [MATH] texts=['f'], structs=[]
+  [TXT] ' arrive, the micro-cache first locally accumulates their byte length'
+  [MATH] texts=['v', 'agg', '=∑', 'v', 'i'], structs=['sSub', 'sSub']
+  [TXT] '. Concurrently, the algorithm designs an LSQ architecture of depth '
+  [MATH] texts=['K'], structs=[]
+  [TXT] '.'
+  [TXT] ' Only when a hash collision occurs in the micro-cache or the preset clock cycle '
+  [MATH] texts=['T', 'flush'], structs=['sSub']
+  [TXT] ' is exceeded will the pre-aggregated '
+  [MATH] texts=['v', 'agg'], structs=['sSub']
+  [TXT] ' be submitted as an atomic instruction to the backend '
+  [MATH] texts=['d×w'], structs=[]
+  [TXT] ' 2D SRAM counter matrix '
+  [MATH] texts=['C'], structs=[]
+  [TXT] ' for concurrent execution:'
+
+======================================================================
+P27 [正文2]
+Plain text: 'Through this co-design highly adapted to the AI ON/OFF burst characteristics, the system not only thoroughly resolves the read-write hazards caused by frequent SRAM access but also reduces dynamic power consumption during the peak of AI training by over 40% under extremely constrained chip areas. This hardware-traffic co-design model enables the NPU to output the estimated size of the elephant flow  with zero delay:'
+----------------------------------------------------------------------
+  [TXT] 'Through this co-design highly adapted to the AI '
+  [TXT] 'ON/OFF'
+  [TXT] ' burst characteristics, the system not only thoroughly resolves the read-write hazards caused by frequent SRAM access but also '
+  [TXT] 'reduces'
+  [TXT] 'dynamic power consumption during the peak of AI training by over 40% under extremely constrained chip areas. This hardware-traffic co-design model enables the NPU to output the estimated size of the elephant flow '
+  [MATH] texts=['S', '(', 'f', ')'], structs=[]
+  [TXT] ' with zero delay:'
+
+======================================================================
+P32 [正文2]
+Plain text: 'Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be  , with the measured RTT of each path  denoted as . To ensure that two consecutive packets forwarded via different paths within the same TCP/RDMA connection do not arrive out-of-order and trigger Go-Back-N retransmissions, the algorithm must strictly adhere to the Flowlet splitting gap theoretical boundary [14]. The time interval  between consecutive packets  and  of the same flow must be strictly greater than the maximum relative one-way delay difference among the candidate paths in the WAN:'
+----------------------------------------------------------------------
+  [TXT] 'Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be '
+  [MATH] texts=['P={', 'p', '1', ',', 'p', '2', ',…,', 'p', 'k', '}'], structs=['sSub', 'sSub', 'sSub']
+  [TXT] ', with the measured '
+  [TXT] 'RTT'
+  [TXT] ' of each path '
+  [TXT] ' denoted as '
+  [MATH] texts=['RTT(', 'p', 'i', ')'], structs=['sSub']
+  [TXT] '. To ensure that two consecutive packets forwarded via different paths within the same TCP/RDMA connection do not arrive out-of-order and trigger Go-Back-N retransmissions, the algorithm must strictly adhere to the Flowlet splitting gap th'
+  [TXT] 'eoretical boundary'
+  [TXT] ' ['
+  [TXT] '14'
+  [TXT] ']'
+  [TXT] '.'
+  [TXT] 'The time interva'
+  [TXT] 'l '
+  [MATH] texts=['Δ', 'T'], structs=[]
+  [TXT] ' between consecutive packets '
+  [MATH] texts=['Pk', 't', 'n'], structs=['sSub']
+  [TXT] ' and '
+  [MATH] texts=['Pk', 't', 'n-1'], structs=['sSub']
+  [TXT] ' of the same flow must be strictly greater than the maximum relative one-way delay difference among the candidate paths in the WAN:'
+
+======================================================================
+P33 [正文2]
+Plain text: 'The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3) is met, a safe new Flowlet splitting point is deemed to have occurred. Subsequently, combined with the underlying SRv6 G-SID list, the UCMP algorithm is utilized for fine-grained scheduling. The probability weight  for selecting candidate path  to carry the Flowlet strictly follows the proportional distribution of the real-time available bandwidth  across the entire network:'
+----------------------------------------------------------------------
+  [TXT] 'The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3) is met, a safe new Flowlet splitting point is deemed to have occurred.'
+  [TXT] 'Subsequently, combined with the underlying SRv6 G-SID list, the UCMP algorithm is utilized for fine-grained scheduling. The probability weight '
+  [MATH] texts=['W(', 'p', 'm', ')'], structs=['sSub']
+  [TXT] ' for selecting candidate path '
+  [MATH] texts=['p', 'm'], structs=['sSub']
+  [TXT] ' to carry the Flowlet strictly follows the proportional distribution'
+  [TXT] 'of the real-time available bandwidth '
+  [MATH] texts=['B', 'res'], structs=['sSub']
+  [TXT] ' across the entire network:'
+
+======================================================================
+P39 [正文2]
+Plain text: 'By coupling in-network hardware processing with flowlet-splitting boundaries, our mechanism balances large flows across high-capacity paths. This design averts host-side NIC buffer exhaustion under high WAN RTTs, establishing an algorithmic foundation for geo-distributed AI computing.'
+----------------------------------------------------------------------
+  [TXT] 'By coupling in-network hardware processing with flowlet-splitting boundaries, our mechanism balances large flows across high-capacity paths. This design averts host-side NIC buffer exhaustion under high WAN RTTs, establishing an algorithmic foundation for geo-distributed AI computing.'
+
+======================================================================
+P40 [大1A下]
+Plain text: '4.2 In-band Signaling Architecture Based on SRv6 End.X.PFC'
+----------------------------------------------------------------------
+  [TXT] '4.2 In-band Signaling Architecture Based on SRv6 End.X.PFC'
+
+======================================================================
+P42 [正文2]
+Plain text: '1) Signaling Structure: Within the 128-bit End.X.PFC SID, the Locator encodes routing topology, while the Function and Argument fields are repurposed to explicitly map specific slice or logical queue IDs.'
+----------------------------------------------------------------------
+  [TXT] '1'
+  [TXT] ') Signaling Structure: Within the 128-bit End.X.PFC SID, the Locator encodes routing topology, while the Function and Argument fields are repurposed to explicitly map specific slice or logical queue IDs.'
+
+======================================================================
+P46 [正文2]
+Plain text: '1) Stream ID Management: At the WAN edge, incoming tenant traffic is assigned a globally unique Stream ID, mapping it to a specific hardware slice sub-interface and logical queue.'
+----------------------------------------------------------------------
+  [TXT] '1'
+  [TXT] ') '
+  [TXT] 'Stream ID Manage'
+  [TXT] 'ment: At the WAN edge, incoming tenant traffic is assigned a globally unique Stream ID, mapping it to a specific hardware slice sub-interface and logical queue.'
+
+======================================================================
+P51 [大1A]
+Plain text: '5. Service Awareness and Slice Hard Isolation Based on APN and SRv6 Data-Network Synergy'
+----------------------------------------------------------------------
+  [TXT] '5. Service Awareness and Slice Hard Isolation Based on APN and SRv6 Data-Network Synergy'
+
+Done

@@ -1,0 +1,2792 @@
+{
+  "paragraphs": [
+    {
+      "index": 0,
+      "style": "Normal",
+      "text": "Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure",
+      "runs": [
+        {
+          "text": "Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "style": "BT1",
+      "text": "Sheng Haiyan1, Yang Yong2 (), Yan Jiayao1, Fei Shuoyao1",
+      "runs": [
+        {
+          "text": "Sheng ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Haiyan",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Yang Yong",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "2",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "(",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ")",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Yan Jiayao",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Fei Shuoyao",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "style": "Normal",
+      "text": "1. Century College, Beijing University of Posts and Telecommunications, Beijing, 100876, China\n2. China Mobile Communications Group Beijing Co., Ltd., Beijing, 100032, China",
+      "runs": [
+        {
+          "text": "1. ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Century College, Beijing University of Posts and Telecommunications, Beijing, 100876, China",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "2. ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "China Mobile Communications Group Beijing Co., Ltd., Beijing, 100032, China",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "style": "英参",
+      "text": "Abstract",
+      "runs": [
+        {
+          "text": "Abstract",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "style": "正文1",
+      "text": "The expanding scale of Large Language Model (LLM) training necessitates a shift toward geo-distributed, disaggregated computational architectures. However, deploying Remote Direct Memory Access (RDMA) over conventional Wide Area Networks (WANs) introduces severe challenges, including latency-induced flow-control failures, load imbalances from elephant-flow polarization, and inadequate multi-tenant isolation. To address these bottlenecks, we propose a lossless transmission architecture tailored for geo-distributed AI computing that operates synergistically across three network planes. At the data plane, a hardware-traffic co-design employs a Load-Store Queue (LSQ) to resolve SRAM read-write dependencies at Terabit-per-second (Tbps) line rates. This structural enhancement enables out-of-order-free micro-flow scheduling via Unequal Cost Multi-Path (UCMP) routing, effectively accommodating the ON/OFF burst patterns of AI workloads. Within the control plane, a tenant-level elastic backpressure mechanism leveraging SRv6 End.X.PFC in-band signaling strictly confines fault domains and prevents global deadlocks. At the management plane, Application-aware Networking (AAN) coupled with slice sub-interfaces guarantees physical hard isolation and data-compliance fencing. Empirical evaluations on a 100-kilometer production WAN demonstrate that this architecture improves link utilization from 45% to over 90% while reducing 99th-percentile tail latency and maximum queue depth by approximately 68%. Furthermore, it substantially decreases Job Completion Time (JCT) for prevalent LLM workloads, restricting computing efficiency degradation to under 1.8%, thereby establishing a robust, deterministic network foundation for high-performance geo-distributed AI computing.",
+      "runs": [
+        {
+          "text": "The expanding scale of Large Language Model (LLM) training necessitates a shift toward geo-distributed, disaggregated computational architectures. However, deploying ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Remote Direct Memory Access ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "(",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "RDMA",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ")",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "over conventional Wide Area Networks (WANs) introduces severe challenges, including latency-induced flow-control failures, load imbalances from elephant-flow polarization, and inadequate multi-tenant isolation. To address these bottlenecks, we propose a lossless transmission architecture tailored for geo-distributed AI computing that operates synergistically across three network planes. ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "At the data plane, a hardware-traffic co-design employs a Load-Store Queue (LSQ) to resolve SRAM read-write dependencies at ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Terabit-per-second (Tbps)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " line rates. This structural enhancement enables out-of-order-free micro-flow scheduling via Unequal Cost Multi-Path (UCMP) routing, effectively accommodating the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "ON/OFF",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " burst patterns of AI workloads.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Within the control plane, a tenant-level elastic backpressure mechanism leveraging SRv6 End.X.PFC in-band signaling strictly confines fault domains and prevents global deadlocks. At the management plane, Application-aware Networking (A",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "A",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "N) coupled with slice sub-interfaces guarantees physical hard isolation and data-compliance fencing. Empirical evaluations on a 100-kilometer production WAN demonstrate that this architecture improves link utilization from 45% to over 90% while reducing 99th-percentile tail latency and maximum queue depth by approximately 68%. Furthermore, it substantially decreases Job Completion Time (JCT) for prevalent LLM workloads, restricting computing efficiency degradation to under 1.8%, thereby establishing a robust, deterministic network foundation for high-performance geo-distributed AI computing.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "style": "英参2",
+      "text": "Keywords  Geo-Distributed AI Computing, Lossless Transmission, Hardware-Algorithm Codesign, Application-aware Networking (AAN)",
+      "runs": [
+        {
+          "text": "Key",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "w",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "ords",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Geo",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "-Distributed AI Computing, Lossless Transmission, Hardware-Algorithm Codesign, Application-aware Networking (A",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "A",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "N)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "style": "大1",
+      "text": "1 Introduction",
+      "runs": [
+        {
+          "text": "1 Introduction",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "style": "正文2",
+      "text": "Trillion-parameter LLMs demand massive compute, exposing single-datacenter (DC) constraints [1]. Consequently, geo-distributed AI across wide-area networks (WANs) has emerged as a critical shift [2]. Privacy regulations mandate disaggregated paradigms—local data, remote training—requiring high throughput, lossless transmission, and multi-tenant isolation.",
+      "runs": [
+        {
+          "text": "Trillion-parameter LLMs demand massive compute, exposing single-datacenter (DC) constraints [1]. Consequently, geo-distributed AI across wide-area networks (WANs) has emerged as a critical shift [2]. Privacy regulations mandate disaggregated paradigms—local data, remote training—requiring high throughput, lossless transmission, and multi-tenant isolation.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "style": "正文2",
+      "text": "Extending intra-DC RoCEv2 to WANs introduces severe challenges [3]. Increased round-trip times (RTT) and bandwidth-delay products (BDP) [4] degrade congestion control, exacerbating PFC deadlocks and Head-of-Line (HoL) blocking [5]. Additionally, AI elephant flows cause severe load imbalance under conventional Equal-Cost Multi-Path (ECMP) routing [6]. Meanwhile, WAN latency renders host-side scheduling impractical, and traditional IP networks lack application awareness to enforce SLAs.",
+      "runs": [
+        {
+          "text": "Extending intra-DC RoCEv2 to WANs introduces severe ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "challenges [3]. Increased round-trip times (RTT) and bandwidth-delay products (BDP) [4] degrade congestion control, exacerbating PFC deadlocks and Head-of-Line (HoL) blocking [5]. Additionally, AI elephant flows cause severe load imbalance under conventional Equal-Cost Multi-Path (ECMP) routing [6]. Meanwhile, WAN latency renders host-side scheduling impractical, and traditional IP networks lack application awareness to enforce SLAs.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "style": "正文2",
+      "text": "To overcome these bottlenecks, we propose a cross-plane lossless WAN architecture. The data plane leverages a Load-Store Queue (LSQ) and UCMP routing for reordering-free, network-side micro-flow scheduling. The control plane utilizes SRv6 End.X.PFC signaling for tenant-level backpressure, preventing global deadlocks. Finally, the management plane integrates APN with network slicing for strict data fencing. Together, this establishes a deterministic, application-aware foundation for geo-distributed AI.",
+      "runs": [
+        {
+          "text": "To overcome these bottlenecks, we propose a cross-plane lossless WAN architecture. The data plane leverages a ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Load-Store Queue (LSQ) and UCMP routing for reordering-free, network-side micro-flow scheduling. The control plane utilizes SRv6 End.X.PFC signaling for tenant-level backpressure, preventing global deadlocks. Finally, the management plane integrates APN with network slicing for strict data fencing. Together, this establishes a deterministic, application-aware foundation for geo-distributed AI.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "style": "大1A",
+      "text": "2 Overall Architecture of the Lossless Transmission Mechanism and Multi-Dimensional Data-Network Synergy",
+      "runs": [
+        {
+          "text": "2 ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Overall Architecture of the Lossless Transmission Mechanism and Multi-Dimensional Data-Network Synergy",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "style": "正文2",
+      "text": "To address the extreme performance challenges imposed by AI computing services on wide-area networks (WANs) while satisfying the stringent security and isolation requirements of data circulation scenarios, this paper proposes a multi-dimensional intelligent WAN framework based on data–network synergy.",
+      "runs": [
+        {
+          "text": "To address the extreme performance challenges imposed by AI computing services on wide-area networks (WANs) while satisfying the stringent security and isolation requirements of data circulation scenarios, this paper proposes a multi-dimensional intelligent WAN framework based on data–network synergy.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "style": "正文2",
+      "text": "The proposed architecture consists of three tightly coupled layers, whose core design principle is the deep integration of computing-resource awareness with network-routing intelligence.",
+      "runs": [
+        {
+          "text": "The proposed architecture consists of three tightly coupled layers, whose core design principle is the deep integration of computing-resource awareness with network-routing intelligence.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "style": "Text",
+      "text": "Fig. 1 Overall Architecture of the Mechanism",
+      "runs": [
+        {
+          "text": "Fig. ",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "1",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Overall",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Architecture of the Mechanism",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "style": "正文2",
+      "text": "The first layer is the Physical Network Layer (AI Router Data Plane), which establishes a highly flexible networking infrastructure based on programmable SRv6. This layer introduces next-generation AI routers equipped with endogenous intelligence capabilities, enabling high-speed traffic feature extraction and hardware-level Sketch-based statistical inference directly within the Network Processing Unit (NPU) [7].",
+      "runs": [
+        {
+          "text": "The first layer is the Physical Network Layer (AI Router Data Plane), which establishes a highly flexible networking infrastructure based on programmable SRv6. This layer introduces next-generation AI routers equipped with endogenous intelligence capabilities, enabling high-speed traffic feature extraction and hardware-level Sketch-based statistical inference directly within the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Network Processing Unit (NPU)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " [",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "7",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "style": "正文2",
+      "text": "The second layer is the Service Connection Layer (AI Connection Layer), which leverages the IPv6 Extension Header framework to embed APN identifiers (APN IDs) and Slice IDs carrying rich service semantics. This design enables the network to differentiate and manage traffic flows with heterogeneous Service Level Agreement (SLA) requirements at the protocol level.",
+      "runs": [
+        {
+          "text": "The second layer is the Service Connection Layer (AI Connection Layer), which leverages the IPv6 Extension Header framework to embed ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "APN",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " identifiers (APN IDs) and Slice IDs carrying rich service semantics. This design enables the network to differentiate and manage traffic ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "flows with heterogeneous Service Level Agreement (SLA) requirements at the protocol level.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "style": "正文2",
+      "text": "The third layer is the Network Control Layer (AI Brain), which functions as the central intelligence of the WAN architecture. This layer deploys an intelligent Software-Defined Networking (SDN) controller with a global network view and a high-precision digital network map. By utilizing large-scale real-time telemetry data, the controller dynamically computes globally optimized congestion-free paths and distributes SRv6 policies with explicit routing information, thereby enabling intelligent orchestration and fine-grained scheduling of network traffic [8].",
+      "runs": [
+        {
+          "text": "The third layer is the Network Control Layer (AI Brain), which functions as the central intelligence of the WAN architecture. This layer deploys an intelligent Software-Defined Networking (SDN) controller with a global network view and a high-precision digital network map. By utilizing large-scale real-time telemetry data, the controller dynamically computes globally optimized congestion-free paths and distributes SRv6 policies with explicit routing information, thereby enabling intelligent orchestration and fine-grained scheduling of network traffic",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " [",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "8",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "style": "大1A",
+      "text": "3 Statistical Algorithm Innovation and Scheduling Theory Tailored for High-Speed NPU Hardware",
+      "runs": [
+        {
+          "text": "3 Statistical",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Algorithm Innovation and Scheduling Theory Tailored for High-Speed NPU Hardware",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "style": "大1A",
+      "text": "Under the severe environment of long-distance WAN transmission, resolving the congestion and hash collisions caused by elephant flows is key to improving overall network throughput. Rather than modifying macroscopic statistical algorithms, this paper proposes a hardware-based statistical algorithm and micro-flow scheduling theory tailored for ultra-high-speed network processing.",
+      "runs": [
+        {
+          "text": "Under the severe environment of long-distance WAN transmission, resolving the congestion and hash collisions caused by elephant flows is key to improving overall network throughput. ",
+          "bold": false,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Rather than modifying macroscopic statistical algorithms, this paper proposes a hardware-based statistical algorithm and micro-flow scheduling theory tailored for ultra-high-speed network processing.",
+          "bold": false,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "style": "大1A下",
+      "text": "3.1 Hardware-Traffic Co-design of LSQ and Micro-cache Based on the ON/OFF Traffic Model",
+      "runs": [
+        {
+          "text": "3.1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Hardware-Traffic Co-design of LSQ and Micro-cache Based on the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "ON/OFF",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Traffic Model",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "style": "正文2",
+      "text": "While Count-Min Sketch is a well-established matrix-based approach for network traffic filtering [9], high-speed network devices traditionally employ LSQs to mitigate Read-After-Write (RAW) hazards and micro-caches for preprocessing acceleration [10]. These architectural primitives have been extensively validated in high-performance designs like SPArch [11]. Building upon these existing components, our primary contribution is a novel hardware-traffic co-design framework specifically tailored to the wide-area burst characteristics of large AI models.",
+      "runs": [
+        {
+          "text": "While Count-Min Sketch is a well-established matrix-based approach for network traffic filtering [9], high-speed network devices traditionally employ LSQs to mitigate Read-After-Write (RAW) hazards and micro-caches for preprocessing acceleration [10]. These architectural primitives have been extensively validated in high-performance designs like SPArch [11]. Building upon these existing components, our primary contribution is a novel hardware-traffic co-design framework specifically tailored to the wide-area burst characteristics of large AI models.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "style": "正文2",
+      "text": "In distributed training, gradient synchronization mechanisms dominate network behavior. Assuming the model parameter size is  and the total number of GPU computing nodes is , during a single Ring All-Reduce iteration, the data volume each node needs to send and receive theoretically reaches up to [12]. Synchronous collective communication across thousands of GPUs triggers severe many-to-one Incast microbursts, characterized by pronounced ON/OFF patterns and strong temporal locality. At Tbps WAN line rates, directly applying traditional Sketch algorithms causes a few elephant flows to repeatedly hit specific SRAM addresses within microseconds, resulting in severe read-write dependency conflicts and throughput degradation [13]. To address this, our queuing theory models demonstrate that the highly time-clustered nature of LLM elephant flows allows even a minimal-capacity front-end micro-cache to achieve an exceptionally high aggregation hit rate.",
+      "runs": [
+        {
+          "text": "In distributed training, gradient synchronization mechanisms",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "dominate network ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "behavior.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Assuming",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " the model parameter size is ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " and the total number of GPU computing nodes is",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", during a single Ring All-Reduce iteration, the data volume each node needs to send and receive theoretically reaches up to",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "[",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "12",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Synchronous collective communication across thousands of GPUs triggers severe many-to-one Incast microbursts, characterized by pronounced ON/OFF patterns and strong temporal locality. At Tbps WAN line rates, directly applying traditional Sketch algorithms causes a few elephant flows to ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "repeatedly hit specific SRAM addresses within microseconds, resulting in severe read-write dependency conflicts and throughput degradation [13]. To address this, our queuing theory models demonstrate that the highly time-clustered nature of LLM elephant flows allows even a minimal-capacity front-end micro-cache to achieve an exceptionally high aggregation hit rate.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "style": "正文2",
+      "text": "When consecutive burst packets with the same five-tuple identifier  arrive, the micro-cache first locally accumulates their byte length . Concurrently, the algorithm designs an LSQ architecture of depth . Only when a hash collision occurs in the micro-cache or the preset clock cycle  is exceeded will the pre-aggregated  be submitted as an atomic instruction to the backend  2D SRAM counter matrix  for concurrent execution:",
+      "runs": [
+        {
+          "text": "When consecutive burst packets with the same five-tuple identifier ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " arrive, the micro-cache first locally accumulates their byte length",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". Concurrently, the algorithm designs an LSQ architecture of depth ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Only when a hash collision occurs in the micro-cache or the preset clock cycle ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " is exceeded will the pre-aggregated ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " be submitted as an atomic instruction to the backend ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " 2D SRAM counter matrix ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " for concurrent execution:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "style": "正文2",
+      "text": "Through this co-design highly adapted to the AI ON/OFF burst characteristics, the system not only thoroughly resolves the read-write hazards caused by frequent SRAM access but also reduces dynamic power consumption during the peak of AI training by over 40% under extremely constrained chip areas. This hardware-traffic co-design model enables the NPU to output the estimated size of the elephant flow  with zero delay:",
+      "runs": [
+        {
+          "text": "Through this co-design highly adapted to the AI ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "ON/OFF",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " burst characteristics, the system not only thoroughly resolves the read-write hazards caused by frequent SRAM access but also ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "reduces",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "dynamic power consumption during the peak of AI training by over 40% under extremely constrained chip areas. This hardware-traffic co-design model enables the NPU to output the estimated size of the elephant flow ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " with zero delay:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "style": "大1A下",
+      "text": "3.2 Theoretical Boundary of Out-of-Order-Free Flowlet Scheduling and the UCMP Model",
+      "runs": [
+        {
+          "text": "3.2 Theoretical Boundary of Out-of-Order-Free Flowlet Scheduling and the UCMP Model",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "style": "First Paragraph",
+      "text": "Once elephant flows are identified via the hardware-traffic co-design, the key challenge lies in segmenting them into flowlets for multipath routing without inducing out-of-order delivery. Because distributed AI training strictly requires lossless communication, out-of-order packets inevitably trigger Go-Back-N ARQ retransmissions. Over high-RTT WANs, these retransmissions incur prohibitive latency penalties that ultimately stall GPU computation.",
+      "runs": [
+        {
+          "text": "Once elephant flows are identified via the hardware-traffic co-design, the key challenge lies in segmenting them into flowlets for multipath routing without inducing out-of-order delivery. Because distributed AI training strictly requires lossless communication, out-of-order packets inevitably trigger Go-Back-N ARQ retransmissions. Over high-RTT WANs, these retransmissions incur prohibitive latency penalties that ultimately stall GPU computation.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "style": "Text",
+      "text": "Fig. 2 Comparison of Load Balancing Schemas: ECMP vs Micro-flow Awareness",
+      "runs": [
+        {
+          "text": "Fig. ",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "2",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "C",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "omparison of Load Balancing Schemas: ECMP vs ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Micro",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "-flow Awareness ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "style": "正文2",
+      "text": "Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be  , with the measured RTT of each path  denoted as . To ensure that two consecutive packets forwarded via different paths within the same TCP/RDMA connection do not arrive out-of-order and trigger Go-Back-N retransmissions, the algorithm must strictly adhere to the Flowlet splitting gap theoretical boundary [14]. The time interval  between consecutive packets  and  of the same flow must be strictly greater than the maximum relative one-way delay difference among the candidate paths in the WAN:",
+      "runs": [
+        {
+          "text": "Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", with the measured ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "RTT",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " of each path ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " denoted as ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". To ensure that two consecutive packets forwarded via different paths within the same TCP/RDMA connection do not arrive out-of-order and trigger Go-Back-N retransmissions, the algorithm must strictly adhere to the Flowlet splitting gap th",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "eoretical boundary",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " [",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "14",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "The time interva",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "l ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " between consecutive packets ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " and ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " of the same flow must be strictly greater than the maximum relative one-way delay difference among the candidate paths in the WAN:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "style": "正文2",
+      "text": "The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3) is met, a safe new Flowlet splitting point is deemed to have occurred. Subsequently, combined with the underlying SRv6 G-SID list, the UCMP algorithm is utilized for fine-grained scheduling. The probability weight  for selecting candidate path  to carry the Flowlet strictly follows the proportional distribution of the real-time available bandwidth  across the entire network:",
+      "runs": [
+        {
+          "text": "The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3) is met, a safe new Flowlet splitting point is deemed to have occurred.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Subsequently, combined with the underlying SRv6 G-SID list, the UCMP algorithm is utilized for fine-grained scheduling. The probability weight ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " for selecting candidate path ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " to carry the Flowlet strictly follows the proportional distribution",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "of the real-time available bandwidth ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " across the entire network:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "style": "正文2",
+      "text": "By integrating network-side hardware processing with flowlet splitting boundaries, this mechanism distributes large flows across high-capacity paths. This effectively prevents host-side NIC buffer exhaustion induced by long WAN RTTs, providing an algorithmic foundation for scaling AI workloads from single datacenters to geo-distributed WANs.",
+      "runs": [
+        {
+          "text": "By integrating network-side hardware processing with flowlet splitting boundaries, this mechanism distributes large flows across high-capacity paths. This effectively prevents host-side NIC buffer exhaustion induced by long WAN RTTs, providing an algorithmic foundation for scaling AI workloads from single datacenters to geo-distributed WANs.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "style": "大1A",
+      "text": "4. SRv6 Tenant-Level Backpressure Mechanism to Overcome Long RTTs",
+      "runs": [
+        {
+          "text": "4. SRv6 Tenant-Level Backpressure Mechanism to Overcome Long ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "RTT",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "s",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "style": "First Paragraph",
+      "text": "Traditional data center RDMA networks heavily rely on PFC mechanisms to achieve lossless transmission [15]. However, when the physical distance extends from within the data center to hundreds of kilometers in a wide area network (WAN) environment, the long RTT imposes fundamentally different constraints on congestion control. Based on flow control stability theory, this paper designs and implements a tenant-level in-band signaling backpressure architecture using SRv6, effectively resolving deadlocks and queue congestion issues in WANs.",
+      "runs": [
+        {
+          "text": "Traditional data center RDMA networks heavily rely on PFC mechanisms to achieve lossless transmission",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " [",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "15",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "However, when the physical distance extends from within the data center to hundreds of kilometers in a wide area network (WAN) environment, the long RTT imposes fundamentally different constraints on congestion control. Based on flow control stability theory, this paper designs and implements a tenant-level in-band signaling backpressure architecture using SRv6, effectively resolving deadlocks and queue congestion issues in WANs.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "style": "大1A下",
+      "text": "4.1 Backpressure Stability and BDP “Blind Mode” Modeling Under Long WAN Latencies",
+      "runs": [
+        {
+          "text": "4.1 Backpressure Stability and BDP “Blind Mode” Modeling Under Long WAN Latencies",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "style": "First Paragraph",
+      "text": "In high-speed WANs, the long RTT significantly increases the BDP. We define the interval from when congestion occurs and backpressure signaling is initiated to when the upstream source receives the signal and stops transmission as the reaction time. Let the link capacity be . During Blind Mode, a substantial volume of in-flight packets continues to flow into the node. The theoretical lower bound of this volume  is given by:",
+      "runs": [
+        {
+          "text": "In high-speed WANs, the long RTT significantly increases the BDP. We define the interval from when congestion occurs and backpressure signaling is initiated to when the upstream source receives the signal and stops transmission as the reaction time. Let the link capacity be ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". During Blind Mode, a substantial volume of in-flight packets continues to flow into the node. The theoretical lower bound of this volume",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " is given by:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "style": "正文2",
+      "text": "By coupling in-network hardware processing with flowlet-splitting boundaries, our mechanism balances large flows across high-capacity paths. This design averts host-side NIC buffer exhaustion under high WAN RTTs, establishing an algorithmic foundation for geo-distributed AI computing.",
+      "runs": [
+        {
+          "text": "By coupling in-network hardware processing with flowlet-splitting boundaries, our mechanism balances large flows across high-capacity paths. This design averts host-side NIC buffer exhaustion under high WAN RTTs, establishing an algorithmic foundation for geo-distributed AI computing.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "style": "大1A下",
+      "text": "4.2 In-band Signaling Architecture Based on SRv6 End.X.PFC",
+      "runs": [
+        {
+          "text": "4.2 In-band Signaling Architecture Based on SRv6 End.X.PFC",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "style": "正文2",
+      "text": "To prevent deadlock propagation and maximize throughput, flow control must shift from coarse port-level to fine-grained tenant-level granularity. However, most commodity WAN devices lack native hardware support for hop-by-hop micro-flow backpressure. To bridge this gap, we implement a network-layer in-band signaling mechanism compliant with recent IETF drafts. Specifically, we define a new SRv6 Endpoint Behavior: the End.X.PFC SID [17]. By leveraging explicit routing, the traffic path is fully embedded in the IPv6 Segment Routing Header (SRH), enabling the following capabilities:",
+      "runs": [
+        {
+          "text": "To prevent deadlock propagation and maximize throughput, flow control must shift from coarse port-level to fine-grained tenant-level granularity. However, most commodity WAN devices lack native hardware support for hop-by-hop micro-flow backpressure. To bridge this gap, we implement a network-layer in-band signaling mechanism compliant with recent IETF drafts. Specifically, we define a new SRv6 Endpoint Behavior: ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "t",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "he",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " End.X.PFC SID [17]. By leveraging explicit routing, the traffic path is fully embedded in the IPv6 Segment Routing Header (SRH), ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "enabling the following capabilities:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "style": "正文2",
+      "text": "1) Signaling Structure: Within the 128-bit End.X.PFC SID, the Locator encodes routing topology, while the Function and Argument fields are repurposed to explicitly map specific slice or logical queue IDs.",
+      "runs": [
+        {
+          "text": "1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") Signaling Structure: Within the 128-bit End.X.PFC SID, the Locator encodes routing topology, while the Function and Argument fields are repurposed to explicitly map specific slice or logical queue IDs.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "style": "正文2",
+      "text": "2) Reverse Traceability: Upon congestion, a downstream node pinpoints the exact upstream interface and queue by parsing the preceding SID in the SRH, overcoming the unidirectional forwarding limitations of traditional IP networks.",
+      "runs": [
+        {
+          "text": "2",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Reverse Traceability: Upon congestion, a downstream node pinpoints the exact upstream interface and queue by parsing the preceding SID in the SRH, overcoming the unidirectional forwarding limitations of traditional IP networks.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "style": "大1A下",
+      "text": "4.3 Fine-grained Tenant-Level Backpressure Algorithm and State Machine Implementation",
+      "runs": [
+        {
+          "text": "4.3 Fine-grained Tenant-Level Backpressure Algorithm and State Machine Implementation",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "style": "正文2",
+      "text": "Building upon the signaling architecture, we implement a constant-time, bounded-state fine-grained backpressure algorithm within the switches. The state machine executes in four core stages:",
+      "runs": [
+        {
+          "text": "Building upon the signaling architecture, we implement a constant-time, bounded-state fine-grained backpressure algorithm wit",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "hin the switches. The state machine executes in four core stages",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ":",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "style": "正文2",
+      "text": "1) Stream ID Management: At the WAN edge, incoming tenant traffic is assigned a globally unique Stream ID, mapping it to a specific hardware slice sub-interface and logical queue.",
+      "runs": [
+        {
+          "text": "1",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Stream ID Manage",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "ment: At the WAN edge, incoming tenant traffic is assigned a globally unique Stream ID, mapping it to a specific hardware slice sub-interface and logical queue.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "style": "正文2",
+      "text": "2) Congestion Detection: The downstream NPU monitors per-tenant queue occupancy (). An alarm triggers when  reaches a critical threshold (), which is explicitly provisioned to absorb the blind-mode in-flight traffic () dictated by the WAN BDP.",
+      "runs": [
+        {
+          "text": "2) ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Congestion Detection: ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "The downstream NPU monitors per-tenant queue occupancy (",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "). An alarm triggers when ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "reaches a critical threshold (",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "), which is explicitly provisioned to absorb the blind-mode in-flight traffic (",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") dictated by the WAN BDP.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "style": "正文2",
+      "text": "3) Precision Flow Control Message (PFCM) Generation: Rather than flooding the link with standard IEEE 802.1Qbb PAUSE frames, the congested node generates a Precision PFCM. This PFCM is encapsulated via an IPv6 Hop-by-Hop (HBH) or Destination Options Header (DOH) [18], addressed to the responsible upstream node's End.X.PFC SID.",
+      "runs": [
+        {
+          "text": "3",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Precision Flow Control Message ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "(",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "PFCM) Generation: Rather than flooding the link with standard IEEE 802.1Qbb PAUSE frames, the congested node generates a Precision PFCM. This PFCM is encapsulated via an IPv6 Hop-by-Hop (HBH) or Destination Options Header (DOH) [18], addressed to the responsible upstream node's End.X.PFC SID.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "style": "正文2",
+      "text": "4) Upstream Enforcement: Upon intercepting the End.X.PFC signal, the upstream device halts only the specific tenant's logical queue identified by the SID.",
+      "runs": [
+        {
+          "text": "4",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ") ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Upstream Enforcement: Upon intercepting the End.X.PFC signal, the upstream",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " device halts only the specific tenant's logical queue identified by the SID.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "style": "正文2",
+      "text": "By elevating flow control from the Layer 2 MAC domain to the Layer 3 SRv6 logical slice domain, End.X.PFC isolates AI workloads without disrupting co-located tenant services. This design inherently eliminates the victim-flow phenomenon, ensuring lossless transmission and low tail latency even under severe Incast conditions.",
+      "runs": [
+        {
+          "text": "By elevating flow control from the Layer 2 MAC domain to the Layer 3 SRv6 logical slice domain, End.X.PFC isolates AI workloads without disrupting co-located tenant services. This design inherently eliminates the victim-flow phenomenon, ensuring lossless transmission and low tail latency even under severe Incast conditions.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "style": "大1A",
+      "text": "5. Service Awareness and Slice Hard Isolation Based on APN and SRv6 Data-Network Synergy",
+      "runs": [
+        {
+          "text": "5. Service Awareness and Slice Hard Isolation Based on APN and SRv6 Data-Network Synergy",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "style": "正文2",
+      "text": "To meet the stringent requirements of data element circulation and ensure strict compliance, the mechanism deeply integrates AAN technology with the underlying slicing architecture, thereby enhancing the network's awareness and responsiveness.",
+      "runs": [
+        {
+          "text": "To meet the stringent requirements of data element ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "circulation and ensure strict compliance, the mechanism deeply integrates AAN technology with the underlying slicing architecture, thereby enhancing the network's awareness and responsiveness.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "style": "大1A下",
+      "text": "5.1 Business Semantic Awareness and Deep APN Encapsulation",
+      "runs": [
+        {
+          "text": "5.1 Business Semantic Awareness and Deep APN Encapsulation",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "style": "正文2",
+      "text": "When business data flows enter the intelligent WAN edge, devices perform deep inspection of flow characteristics to accurately identify their business attributes (e.g., sensitive medical records, large model training data). These high-dimensional semantics are then mapped to a standardized identifier—the APN ID. In accordance with standard encapsulation specifications, this APN ID is seamlessly embedded into the IPv6 packet’s Hop-by-Hop Options Header or Destination Options Header, enabling the underlying network to recognize and interpret the specific business context of the packets it carries in real time.",
+      "runs": [
+        {
+          "text": "When business data flows enter the intelligent WAN edge, devices perform deep inspection of flow characteristics to accurately identify their business attributes (e.g., sensitive medical records, large model training data). These high-dimensional semantics are then mapped to a standardized identifier—the APN ID. In accordance with standard encapsulation specifications, this APN ID is seamlessly embedded into the IPv6 packet’s Hop-by-Hop Options Header or Destination Options Header, enabling the underlying network to recognize and interpret the specific business context of the packets it carries in real time.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "style": "Text",
+      "text": "Fig. 3 APN6 Application-aware Encapsulation and Synergy Workflow",
+      "runs": [
+        {
+          "text": "Fig. ",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "3",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "APN6 Application-aware Encapsulation and Synergy Workflow",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "style": "大1A下",
+      "text": "5.2 Slice Sub-interface Hard Isolation Guarantee",
+      "runs": [
+        {
+          "text": "5.2 Slice Sub-interface Hard Isolation Guarantee",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "style": "正文2",
+      "text": "Traditional networks predominantly rely on soft isolation techniques, wherein best-effort traffic can inadvertently exhaust shared buffer resources during severe congestion, thereby compromising high-priority transmissions. To satisfy the stringent zero-packet-loss requirements inherent to large-scale AI training, this approach integrates physical-layer slice sub-interface technology within the Enhanced VPN (VPN+) framework to achieve strict hardware-level isolation [19]. Through underlying hardware mechanisms, a single high-speed physical link is partitioned into mutually independent logical sub-interfaces. Each slice is deterministically bound to dedicated hardware queue resources and guaranteed physical bandwidth within the NPU. Consequently, even under conditions where background traffic experiences extreme congestion and packet loss, the dedicated slices accommodating critical AI workloads are able to sustain deterministic ultra-low latency and absolute zero packet loss.",
+      "runs": [
+        {
+          "text": "Traditional networks predominantly rely on soft isolation techniques, wherein best-effort traffic can inadvertently exhaust shared buffer resources during severe congestion, thereby compromising high-priority transmissions. To satisfy the stringent zero-packet-loss requirements inherent to large-scale AI training, this approach integrates physical-layer slice sub-interface technology within the Enhanced VPN (VPN+) framework to achieve strict hardware-level isolation",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " [",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "19",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "]",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". Through underlying hardware mechanisms, a single high-speed physical link is partitioned into mutually independent logical sub-interfaces. Each slice is deterministically bound to dedicated hardware queue resources and guaranteed physical bandwidth within the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "NPU. Consequently, even under conditions where background traffic experiences extreme congestion and packet loss, the dedicated slices accommodating critical AI workloads are able to sustain deterministic ultra-low latency and absolute zero packet loss.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "style": "大1A下",
+      "text": "5.3 Compliant Routing and Data Fencing Based on APN",
+      "runs": [
+        {
+          "text": "5.3 Compliant Routing and Data Fencing Based on APN",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "style": "正文2",
+      "text": "In privacy protection scenarios, the APN ID functions as an identifier for data traversing the network. The control platform establishes strict security boundaries in advance. When sensitive data enters the network, the system triggers the Constrained Shortest Path First (CSPF) algorithm based on the security SLA requirements associated with the APN ID. This algorithm specifically computes a customized SRv6 explicit path that completely avoids any untrusted regions. As a result, sensitive data achieves isolation from non-compliant areas at the physical layer, effectively creating an invisible logical tunnel across the WAN.",
+      "runs": [
+        {
+          "text": "In privacy protection scenarios, the APN ID functions as an identifier for data traversing the network. The control platform establishes strict security boundaries in advance. When sensitive data enters the network, the system triggers the Constrained Shortest Path First (CSPF) algorithm based on the security SLA requirements associated with the APN ID. This algorithm specifically computes a customized SRv6 explicit path that completely avoids any untrusted regions. As a result, sensitive data achieves isolation from non-compliant areas at the physical layer, effectively creating an invisible logical tunnel across the WAN.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "style": "大1A",
+      "text": "6. Production Network Deployment and Multi-Dimensional Performance Evaluation",
+      "runs": [
+        {
+          "text": "6. Production Network Deployment and Multi-Dimensional Performance Evaluation",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "style": "正文2",
+      "text": "To rigorously quantify the real-world performance of this mechanism under underlying algorithm optimization and data-network synergy, we conducted large-scale testing and validation directly on the live intelligent wide-area production network built by us. The one-way physical distance of the test topology exceeded 100 kilometers, and the workloads comprehensively covered distributed training tasks of industry-mainstream LLM models.",
+      "runs": [
+        {
+          "text": "To rigorously quantify the real-world performance of this mechanism under underlying algorithm optimization and data-network synergy, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "we",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " conducted large-scale testing and validation directly on the live intelligent wide-area production network built by us. The one-way physical distance of the test topology exceeded 100 kilometers",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ", and t",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "he workloads comprehensively covered distributed training tasks of industry-mainstream LLM models.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "style": "大1A下",
+      "text": "6.1 JCT and Model Training Computing Efficiency Evaluation",
+      "runs": [
+        {
+          "text": "6.1 JCT and Model Training Computing Efficiency Evaluation",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "style": "正文2",
+      "text": "In distributed AI training, the primary key performance indicator (KPI) of network efficiency is not bandwidth utilization alone, but rather JCT. As model parameter scales continue to grow, network congestion caused by Ring All-Reduce gradient synchronization exerts an increasingly significant impact on JCT, thereby substantially degrading end-to-end training performance.",
+      "runs": [
+        {
+          "text": "In distributed AI training, the primary key performance indicator (KPI) of network efficiency is not bandwidth utilization alone, but rather JCT. As model parameter scales continue to grow, network congestion caused by Ring All-Reduce gradient synchronization exerts an increasingly significant impact on JCT, thereby substantially degrading end-to-end training performance.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 65,
+      "style": "正文2",
+      "text": "To objectively evaluate system carrying capacity under varying network conditions, this experiment selects three representative models with different parameter scales: LLaMA-7B, LLaMA-13B, and GPT-175B, the latter imposing extremely high collective communication overhead due to its massive parameter volume.",
+      "runs": [
+        {
+          "text": "To objectively evaluate system carrying capacity under varying network conditions, this experiment selects three representative models with different parameter scales: LLaMA-7B, LLaMA-13B, and GPT-175B, the latter imposing extremely high collective communication overhead due to its massive parameter volume.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "style": "正文2",
+      "text": "The evaluation framework defines three controlled experimental groups:",
+      "runs": [
+        {
+          "text": "The evaluation framework defines three controlled experimental groups:",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "style": "正文2",
+      "text": "1) Local-DC: A same-rack, short-reach environment with RTT < 10μs and lossless transmission, representing an idealized intra-datacenter setting and serving as the upper-bound reference for achievable JCT.",
+      "runs": [
+        {
+          "text": "1)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Local-DC: A same-rack, short-reach environment with RTT < 10μs and lossless transmission, representing an idealized intra-datacenter setting and serving as the upper-bound reference for achievable JCT.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "style": "正文2",
+      "text": "2) Legacy WAN: A conventional wide-area network configuration employing host-side 5-tuple ECMP hash-based load balancing combined with standard port-level PFC.",
+      "runs": [
+        {
+          "text": "2)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Legacy WAN: A conventional wide-area network configuration employing host-side 5-tuple ECMP hash-based load balancing combined with standard port-level PFC.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "style": "正文2",
+      "text": "3) Proposed Mechanism: A 100-km long-distance deployment that enables hardware-level Sketch-based micro-flow scheduling adapted to the LSQ architecture, together with a tenant-level backpressure control mechanism.",
+      "runs": [
+        {
+          "text": "3)",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Proposed Mechanism: A 100-km long-distance deployment that enables hardware-level Sketch-based micro-flow scheduling adapted to the LSQ architecture, together with a tenant-level backpressure control mechanism.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "style": "表题",
+      "text": "Table 1 Throughput and computing efficiency comparison of different scale large models (LLaMa/GPT) over a 100-km WAN",
+      "runs": [
+        {
+          "text": "Table 1 ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Throughput and computing efficiency comparison of different scale large models (LLaMa/GPT)",
+          "bold": false,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "over a 100-km WAN",
+          "bold": false,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "style": "正文2",
+      "text": "The detailed experimental results in Table 1 indicate the following observations. For billion-parameter-scale models such as LLaMA-7B and LLaMA-13B, the Legacy WAN exhibits severe performance degradation due to hash-induced traffic polarization and delayed PFC congestion control. These factors lead to substantial GPU underutilization, with computational efficiency losses exceeding 30%.",
+      "runs": [
+        {
+          "text": "The detailed experimental results in Table 1 indicate the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "following observations. For billion-parameter-scale models such as LLaMA-7B and LLaMA-13B, the Legacy WAN exhibits severe performance degradation due to hash-induced traffic polarization and delayed PFC congestion control. These factors lead to substantial GPU underutilization, with computational efficiency losses exceeding 30%.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "style": "正文2",
+      "text": "For ultra-large-scale models such as GPT-175B, the problem is further amplified by pronounced Incast traffic patterns during gradient synchronization. Under such conditions, the Legacy WAN exhibits severe system-level performance degradation, with throughput dropping by more than 74%, which in turn leads to a multi-fold increase in JCT.",
+      "runs": [
+        {
+          "text": "For ultra-large-scale models such as GPT-175B, the problem is further amplified by pronounced Incast traffic patterns during gradient synchronization. Under such conditions, the Legacy WAN exhibits severe system-level performance degradation, with throughput dropping by more than 74%, which in turn leads to a multi-fold increase in JCT",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "style": "正文2",
+      "text": "In contrast, when the proposed hardware scheduling and tenant-level backpressure mechanisms are fully enabled, the achieved throughput (samples/s) for both medium-scale and large-scale models closely approximates the ideal performance curve observed in Local-DC environments. Across a 100-km wide-area deployment, the overall computational efficiency loss is constrained to approximately 1.8%.",
+      "runs": [
+        {
+          "text": "In contrast, when the proposed hardware scheduling and tenant-level backpressure mechanisms are fully enabled, the achieved throughput (samples/s) for both medium-scale and large-scale models closely approximates the ideal performance curve observed in Local-DC environments. Across a 100-km wide-area deployment, the overall computational efficiency loss is constrained to approximately 1.8%",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ".",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "style": "正文2",
+      "text": "These results strongly demonstrate that the proposed network-side hardware–algorithm co-design effectively mitigates communication bottlenecks induced by model scaling, thereby significantly reducing JCT under wide-area training scenarios.",
+      "runs": [
+        {
+          "text": "These results strongly demonstrate that the proposed network-side hardware–algorithm co-design effectively mitigates communication bottlenecks induced by model scaling, thereby significantly reducing JCT under wide-area training scenarios.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "style": "大1A下",
+      "text": "6.2 Tail Latency and Microscopic Queue Depth Analysis",
+      "runs": [
+        {
+          "text": "6.2 Tail Latency and Microscopic Queue Depth Analysis",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "style": "正文2",
+      "text": "In distributed training systems, the AI network performance is not governed by average latency but is instead dominated by the “slowest packet” phenomenon. During synchronous iterations, tens of thousands of GPUs may be forced to idle while waiting for a single straggling packet delayed by network congestion, thereby significantly degrading cluster-level execution efficiency. Consequently, minimizing tail latency, particularly the 99th percentile (P99), is critical for maintaining training performance.",
+      "runs": [
+        {
+          "text": "In distributed training systems, the AI network performance is not governed by average latency but is instead dominated by the “slowest packet” phenomenon. During synchronous iterations, tens of thousands of GPUs may be forced to idle while waiting for a single straggling packet delayed by network congestion, thereby significantly degrading cluster-level execution efficiency. Consequently, m",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "inimizing tail latency, particularly the 99th percentile (P99), is critical for maintaining training performance.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "style": "正文2",
+      "text": "In this experiment, we further analyze the microscopic queue occupancy and tail latency behavior of the WAN core aggregation switch during the gradient synchronization phase of backpropagation.",
+      "runs": [
+        {
+          "text": "In this experiment, we further analyze the microscopic queue occupancy and tail latency behavior of the WAN core aggregation switch during the gradient synchronization phase of backpropagation.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "style": "Body Text",
+      "text": "Table 2 Evaluation of link utilization, maximum queue depth, and P99 tail latency under polarized elephant flow impacts",
+      "runs": [
+        {
+          "text": "Table 2 ",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Evaluation of link utilization, maximum queue depth, and P99 tail latency under polarized elephant flow impacts",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "style": "正文2",
+      "text": "As shown in Table 2, conventional ECMP routing under heavy elephant-flow workloads causes rapid queue buildup on core links, reaching peak depths of approximately 4.8M packets. This congestion frequently triggers upstream PAUSE frames, creating a feedback loop that severely inflates P99 tail latency.",
+      "runs": [
+        {
+          "text": "As shown in Table 2, conventional ECMP routing under heavy elephant-flow workloads causes rapid queue buildup on core links, reaching peak depths of approximately 4.8M packets. This congestion frequently triggers upstream PAUSE frames, creating a feedback loop that severely inflates P99 tail latency.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "style": "正文2",
+      "text": "In contrast, by leveraging the in-network LSQ-Sketch matrix for millisecond-level dynamic flow slicing, our mechanism elevates link utilization beyond 90% while reducing peak queue depth by ~68% (to under 1.5M packets). This suppression of queue occupancy and P99 latency minimizes the network-layer \"straggler\" effect, bridging the compute-communication gap for distributed training.",
+      "runs": [
+        {
+          "text": "In contrast, by leveraging the in-network LSQ-Sketch matrix for millisecond-level dynamic flow ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "slicing,",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " our mechanism elevates link utilization beyond 90% while reducing peak queue depth by ~68% (to under 1.5M packets). This suppression of queue occupancy and P99 latency minimizes the network-layer \"straggler\" effect, bridging the compute-communication gap for distributed training.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 84,
+      "style": "Body Text",
+      "text": "Finally, isolation stress tests validate the efficacy of AAN slice-based sub-interfaces. Even when injected background traffic exceeds line rate and causes massive packet drops on the best-effort slice, the hardware-isolated AI slice maintains deterministic forwarding. It achieves zero packet loss and strict interference isolation, delivering a secure transport substrate for data-localized computing networks.",
+      "runs": [
+        {
+          "text": "Finally, isolation stress tests validate the efficacy of AAN slice-based sub-interfaces. Even when injected background traffic exceeds line rate and causes massive packet drops on the best-effort slice, the hardware-isolated AI slice maintains deterministic forwarding. It achieves zero packet loss and strict interference isolation, delivering a secure transport substrate for data-localized computing networks.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "style": "大1A",
+      "text": "7. Conclusion and future work",
+      "runs": [
+        {
+          "text": "7. Conclusion and ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "future work",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "style": "正文2",
+      "text": "As distributed LLM training scales across wide-area networks, traditional best-effort IP architectures suffer from flow-control instability, hash polarization, and inadequate application awareness. To address these bottlenecks, we propose a cross-plane lossless transmission architecture based on SRv6. At the data plane, we co-design in-network hardware with traffic scheduling, integrating an LSQ-assisted Sketch mechanism to resolve SRAM read-write contention under bursty ON/OFF traffic. By adhering to a rigorous temporal bound for flowlet segmentation, our UCMP scheduling circumvents the out-of-order Go-Back-N retransmission penalties typical of high-RTT WANs.",
+      "runs": [
+        {
+          "text": "As distributed LLM training scales across wide-area networks, traditional best-effort IP architectures suffer from flow-control instability, hash polarization, and inadequate application awareness. To address these bottlenecks, we propose a cross-plane lossless transmission architecture based on ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "SR",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "v",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "6",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ". At the data plane, we co-design in-network hardware with traffic scheduling, integrating an LSQ-assisted Sketch mechanism to resolve SRAM read-write contention under bursty ON/OFF traffic. By adhering to a ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "rigorous temporal bound for flowlet segmentation, our UCMP scheduling circumvents the out-of-order Go-Back-N retransmission penalties typical of high-RTT WANs.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "style": "正文2",
+      "text": "To guarantee lossless transmission, we introduce a tenant-level elastic backpressure mechanism via SRv6 End.X.PFC in-band signaling, inherently preventing global deadlocks. Concurrently, integrating AAN enforces hardware-level data isolation for strict regulatory compliance. Evaluations on a 100-km production WAN demonstrate that our system elevates link utilization from 45% to over 90%. By mitigating tail-latency inflation, the architecture restricts the computational efficiency loss of training massive models, such as GPT-175B, to approximately 1.8%.",
+      "runs": [
+        {
+          "text": "To guarantee lossless transmission, we introduce a tenant-level elastic backpressure mechanism via SRv6 End.X.PFC in-band signaling, inherently preventing global deadlocks. Concurrently, integrating AAN enforces hardware-level data isolation for strict regulatory compliance. Evaluations on a 100-km production WAN demonstrate that our system elevates link utilization from 45% to over 90%. By mitigating tail-latency inflation, the architecture restricts the computational efficiency loss of training massive models, such as GPT-175B, to approximately 1.8%.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 88,
+      "style": "Body Text",
+      "text": "Future iterations will explore integrating Deep Reinforcement Learning (DRL) for autonomous forwarding-plane optimization, advancing toward fully self-adaptive routing networks [20].",
+      "runs": [
+        {
+          "text": "Future iterations will explore integrating Deep Reinforcement Learning (DRL) for autonomous forwarding-plane optimization, advancing toward fully self-adaptive routing networks [20].",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 89,
+      "style": "1",
+      "text": "Acknowledgements",
+      "runs": [
+        {
+          "text": "Acknowledgements",
+          "bold": true,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 90,
+      "style": "Normal",
+      "text": "The authors would like to thank the Century College, Beijing University of Posts and Telecommunications for providing the necessary research facilities and technical support for this study.",
+      "runs": [
+        {
+          "text": "The authors would like to thank the ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Century College, Beijing University of Posts and Telecommunications",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " for providing the necessary research facilities and technical support for this study.",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 91,
+      "style": "大1A",
+      "text": "References",
+      "runs": [
+        {
+          "text": "References",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 92,
+      "style": "Normal",
+      "text": "Narayanan D, Shoeybi M, Casper J, et al. Efficient large-scale language model training on GPU clusters using megatron-LM. Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC), Nov 14-19, 2021, St. Louis, MO, USA. 2021: 1-15",
+      "runs": [
+        {
+          "text": "Narayanan D, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Shoeybi",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " M, Casper J, et al. Efficient large-scale language model training on GPU clusters using ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "megatron",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "-LM. Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC), Nov 14-19, 2021, St. Louis, MO, USA. 2021: 1-15",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "style": "Normal",
+      "text": "Hsieh K, Harlap A, Vijaykumar N, et al. Gaia: Geo-distributed machine learning approaching LAN speeds. Proceedings of the 14th USENIX Symposium on Networked Systems Design and Implementation (NSDI), Mar 27-29, 2017, Boston, MA, USA. 2017: 629-647",
+      "runs": [
+        {
+          "text": "Hsieh K, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Harlap",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, Vijaykumar N, et al. Gaia: Geo-distributed machine learning approaching LAN speeds. Proceedings of the 14th USENIX Symposium on Networked Systems Design and Implementation (NSDI), Mar 27-29, 2017, Boston, MA, USA. 2017: 629-647",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 94,
+      "style": "Normal",
+      "text": "Guo C, Wu H, Tan K, et al. RDMA over commodity ethernet at scale. Proceedings of the ACM SIGCOMM 2016 Conference, Aug 22-26, 2016, Florianopolis, Brazil. 2016: 202-215",
+      "runs": [
+        {
+          "text": "Guo C, Wu H, Tan K, et al. RDMA over commodity ethernet at scale. Proceedings of the ACM SIGCOMM 2016 Conference, Aug 22-26, 2016, Florianopolis, Brazil. 2016: 202-215",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 95,
+      "style": "Normal",
+      "text": "Mittal R, Lam V T, Dukkipati N, et al. TIMELY: RTT-based congestion control for the datacenter. Proceedings of the ACM SIGCOMM 2015 Conference, Aug 17-21, 2015, London, UK. 2015: 537-550",
+      "runs": [
+        {
+          "text": "Mittal R, Lam V T, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Dukkipati",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " N, et al. TIMELY: RTT-based congestion control for the datacenter. Proceedings of the ACM SIGCOMM 2015 Conference, Aug 17-21, 2015, London, UK. 2015: 537-550",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 96,
+      "style": "Normal",
+      "text": "Liu Z, Bai W, Zhu H, et al. Congestion control for high-speed WANs. IEEE/ACM Transactions on Networking, 2020, 28(5): 2154-2167",
+      "runs": [
+        {
+          "text": "Liu Z, Bai W, Zhu H, et al. Congestion control for high-speed WANs. IEEE/ACM Transactions on Networking, 2020, 28(5): 2154-2167",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 97,
+      "style": "Normal",
+      "text": "Al-Fares M, Loukissas A, Vahdat A. A scalable, commodity data center network architecture. ACM SIGCOMM Computer Communication Review, 2008, 38(4): 63-74",
+      "runs": [
+        {
+          "text": "Al-Fares M, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Loukissas",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, Vahdat A. A scalable, commodity data center network architecture. ACM SIGCOMM Computer Communication Review, 2008, 38(4): 63-74",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 98,
+      "style": "Normal",
+      "text": "Sapio A, Abdelmoniem A M, Anderson D, et al. Scaling distributed machine learning with in-network aggregation. Proceedings of the 18th USENIX Symposium on Networked Systems Design and Implementation (NSDI), Apr 12-14, 2021. 2021: 785-808",
+      "runs": [
+        {
+          "text": "Sapio",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Abdelmoniem",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A M, Anderson D, et al. Scaling distributed machine learning with in-network aggregation. Proceedings of the 18th USENIX Symposium on Networked Systems Design and Implementation (NSDI), Apr 12-14, 2021. 2021: 785-808",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 99,
+      "style": "Normal",
+      "text": "Zhang H, Chen M, Bai W, et al. HPCC: high precision congestion control. Proceedings of the ACM SIGCOMM 2019 Conference, Aug 19-23, 2019, Beijing, China. 2019: 137-151",
+      "runs": [
+        {
+          "text": "Zhang H, Chen M, Bai W, et al. HPCC: high precision congestion control. Proceedings of the ACM SIGCOMM 2019 Conference, Aug 19-23, 2019, Beijing, China. 2019: 137-151",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 100,
+      "style": "Normal",
+      "text": "Cormode G, Muthukrishnan S. An improved data stream summary: the count-min sketch and its applications. Journal of Algorithms, 2005, 55(1): 58-75",
+      "runs": [
+        {
+          "text": "Cormode",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " G, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Muthukrishnan",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " S. An improved data stream summary: the count-min sketch and its applications. Journal of Algorithms, 2005, 55(1): 58-75",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 101,
+      "style": "Normal",
+      "text": "Chole S, Fingerhut A, Ma S, et al. DRMT: disaggregated programmable switching. Proceedings of the ACM SIGCOMM 2017 Conference, Aug 21-25, 2017, Los Angeles, CA, USA. 2017: 1-14",
+      "runs": [
+        {
+          "text": "Chole S, Fingerhut A, Ma S, et al. DRMT: disaggregated programmable switching. Proceedings of the ACM SIGCOMM 2017 Conference, Aug 21-25, 2017, Los Angeles, CA, USA. 2017: 1-14",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 102,
+      "style": "Normal",
+      "text": "Dong P, Zheng W, Fang J, et al. SPArch: efficient architecture for sparse matrix multiplication. Proceedings of the 47th Annual International Symposium on Computer Architecture (ISCA), May 29-Jun 3, 2020, Valencia, Spain. 2020: 138-151",
+      "runs": [
+        {
+          "text": "Dong P, Zheng W, Fang J, et al. SPArch: efficient architecture for sparse matrix multiplication. Proceedings of the 47th Annual International Symposium on Computer Architecture (ISCA), May 29-Jun 3, 2020, Valencia, Spain. 2020: 138-151",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 103,
+      "style": "Normal",
+      "text": "Sergeev A, Del Balso M. Horovod: fast and easy distributed deep learning in TensorFlow. arXiv preprint arXiv:1802.05799, 2018",
+      "runs": [
+        {
+          "text": "Sergeev",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, Del ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Balso",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " M. ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Horovod",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": ": fast and easy distributed deep learning in TensorFlow. ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "arXiv",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " preprint arXiv:1802.05799, 2018",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 104,
+      "style": "Normal",
+      "text": "Moshref M, Yu M, Govindan R, et al. DREAM: dynamic resource allocation for software-defined measurement. Proceedings of the ACM SIGCOMM 2014 Conference, Aug 17-22, 2014, Chicago, IL, USA. 2014: 419-430",
+      "runs": [
+        {
+          "text": "Moshref",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " M, Yu M, Govindan R, et al. DREAM: dynamic resource allocation for software-defined measurement. Proceedings of the ACM SIGCOMM ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "2014 Conference, Aug 17-22, 2014, Chicago, IL, USA. 2014: 419-430",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 105,
+      "style": "Normal",
+      "text": "Kandula S, Katabi D, Sinha S, et al. Dynamic load balancing without packet reordering. ACM SIGCOMM Computer Communication Review, 2007, 37(2): 51-62",
+      "runs": [
+        {
+          "text": "Kandula",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " S, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Katabi",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " D, Sinha S, et al. Dynamic load balancing without packet reordering. ACM SIGCOMM Computer Communication Review, 2007, 37(2): 51-62",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 106,
+      "style": "Normal",
+      "text": "Stephens B, Cox A L, Singla A, et al. Practical DCB for improved data center networks. Proceedings of the IEEE INFOCOM 2014 Conference, Apr 27-May 2, 2014, Toronto, Canada. 2014: 1824-1832",
+      "runs": [
+        {
+          "text": "Stephens B, Cox A L, Singla A, et al. Practical DCB for improved data center networks. Proceedings of the IEEE INFOCOM 2014 Conference, Apr 27-May 2, 2014, Toronto, Canada. 2014: 1824-1832",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 107,
+      "style": "Normal",
+      "text": "Lu G, Miao R, Xiong Y, et al. RoCEv2 with concurrency control. Proceedings of the ACM SIGCOMM 2022 Conference, Aug 22-26, 2022, Amsterdam, Netherlands. 2022: 12-25",
+      "runs": [
+        {
+          "text": "Lu G, Miao R, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Xiong",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " Y, et al. RoCEv2 with concurrency control. Proceedings of the ACM SIGCOMM 2022 Conference, Aug 22-26, 2022, Amsterdam, Netherlands. 2022: 12-25",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 108,
+      "style": "Normal",
+      "text": "Filsfils C, Camarillo P, Leddy J, et al. IPv6 segment routing. IETF RFC 8986, 2021",
+      "runs": [
+        {
+          "text": "Filsfils",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " C, Camarillo P, Leddy J, et al. IPv6 segment routing. IETF RFC 8986, 2021",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 109,
+      "style": "Normal",
+      "text": "Li Z, Peng S, Voyer D, et al. Application-aware Networking (APN) framework. IETF Internet-Draft, 2022",
+      "runs": [
+        {
+          "text": "Li Z, Peng S, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Voyer",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " D, et al. Application-aware Networking (APN) framework. IETF Internet-Draft, 2022",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 110,
+      "style": "Normal",
+      "text": "Foukas X, Patounas G, Elmokashfi A, et al. Network slicing in 5G: Survey and challenges. IEEE Communications Magazine, 2017, 55(5): 94-100",
+      "runs": [
+        {
+          "text": "Foukas",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " X, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Patounas",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " G, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Elmokashfi",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, et al. Network slicing in 5G: Survey and challenges. IEEE Communications Magazine, 2017, 55(5): 94-100",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    },
+    {
+      "index": 111,
+      "style": "Normal",
+      "text": "Valadarsky A, Schapira M, Shahaf D, et al. Learning to route. Proceedings of the 16th ACM Workshop on Hot Topics in Networks (HotNets), Nov 30-Dec 1, 2017, Palo Alto, CA, USA. 2017: 74-80",
+      "runs": [
+        {
+          "text": "Valadarsky",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " A, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Schapira",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " M, ",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "Shahaf",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": " D, et al. Learning to route. Proceedings of the 16th ACM Workshop on Hot Topics in Networks (",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "HotNets",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        },
+        {
+          "text": "), Nov 30-Dec 1, 2017, Palo Alto, CA, USA. 2017: 74-80",
+          "bold": null,
+          "italic": null,
+          "underline": null
+        }
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "index": 0,
+      "data": [
+        [
+          "",
+          "(1)"
+        ]
+      ]
+    },
+    {
+      "index": 1,
+      "data": [
+        [
+          "",
+          "(2)"
+        ]
+      ]
+    },
+    {
+      "index": 2,
+      "data": [
+        [
+          "",
+          "(3)"
+        ]
+      ]
+    },
+    {
+      "index": 3,
+      "data": [
+        [
+          "",
+          "(4)"
+        ]
+      ]
+    },
+    {
+      "index": 4,
+      "data": [
+        [
+          "",
+          "(5)"
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "data": [
+        [
+          "Model Type and Parameters",
+          "Control Group Configuration",
+          "Training Throughput (Samples/s)",
+          "Computing Efficiency Loss Rate relative to Local-DC"
+        ],
+        [
+          "LLaMa-7B",
+          "Local-DC (LAN Baseline)",
+          "715.4",
+          "0.00%"
+        ],
+        [
+          "LLaMa-7B",
+          "Legacy WAN",
+          "486.2",
+          "-32.03%"
+        ],
+        [
+          "LLaMa-7B",
+          "Proposed Mechanism",
+          "708.5",
+          "-0.96%"
+        ],
+        [
+          "LLaMa-13B",
+          "Local-DC (LAN Baseline)",
+          "412.8",
+          "0.00%"
+        ],
+        [
+          "LLaMa-13B",
+          "Legacy WAN",
+          "265.1",
+          "-35.78%"
+        ],
+        [
+          "LLaMa-13B",
+          "Proposed Mechanism",
+          "406.3",
+          "-1.57%"
+        ],
+        [
+          "GPT-175B",
+          "Local-DC (LAN Baseline)",
+          "25.1",
+          "0.00%"
+        ],
+        [
+          "GPT-175B",
+          "Legacy WAN",
+          "6.5",
+          "-74.10% (JCT collapses)"
+        ],
+        [
+          "GPT-175B",
+          "Proposed Mechanism",
+          "24.6",
+          "-1.99%"
+        ]
+      ]
+    },
+    {
+      "index": 6,
+      "data": [
+        [
+          "Routing Load Balancing Mechanism",
+          "Macro Network Average Link Utilization",
+          "Core Switch Maximum Queue Depth (M packets)",
+          "P99 Tail Latency"
+        ],
+        [
+          "Legacy Mechanism (Hash ECMP)",
+          "Approx. 45% (Severe Resource Waste)",
+          "4.8 M (Prolonged Near Overflow)",
+          "Surges over 300%+ above baseline"
+        ],
+        [
+          "Proposed Mechanism (Hardware Sketch +UCMP)",
+          "> 90% (Extremely High Conversion)",
+          "Reduced by ~68%)",
+          "Approaches Ultra-Low Jitter LAN State"
+        ]
+      ]
+    }
+  ]
+}

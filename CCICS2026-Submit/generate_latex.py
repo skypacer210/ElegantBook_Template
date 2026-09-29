@@ -239,10 +239,10 @@ def main():
     output_lines.append('\\end{document}')
     
     # Write to file
-    with open('JPCSLaTeXGuidelines.tex', 'w', encoding='utf-8') as f:
+    with open('Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure -Submit.tex', 'w', encoding='utf-8') as f:
         f.write('\n'.join(output_lines))
-    
-    print(f'Generated JPCSLaTeXGuidelines.tex successfully')
+        
+    print(f'Generated Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure -Submit.tex successfully')
     print(f'Total lines: {len(output_lines)}')
 
 

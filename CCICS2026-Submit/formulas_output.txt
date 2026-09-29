@@ -1,0 +1,311 @@
+=== Full document paragraphs with their XML content (checking for math) ===
+[P  0] [Normal      ]
+       TEXT: Lossless Transmission for Geo-Distributed AI Computing via LSQ-Sketch and APN-Aware SRv6 Backpressure
+
+[P  1] [BT1         ]
+       TEXT: Sheng Haiyan1, Yang Yong2 (), Yan Jiayao1, Fei Shuoyao1
+
+[P  2] [Normal      ]
+       TEXT: 1. Century College, Beijing University of Posts and Telecommunications, Beijing, 100876, China
+2. China Mobile Communica
+
+[P  4] [英参          ]
+       TEXT: Abstract
+
+[P  5] [正文1         ]
+       TEXT: The expanding scale of Large Language Model (LLM) training necessitates a shift toward geo-distributed, disaggregated co
+
+[P  6] [英参2         ]
+       TEXT: Keywords  Geo-Distributed AI Computing, Lossless Transmission, Hardware-Algorithm Codesign, Application-aware Networking
+
+[P  9] [大1          ]
+       TEXT: 1 Introduction
+
+[P 10] [正文2         ]
+       TEXT: Trillion-parameter LLMs demand massive compute, exposing single-datacenter (DC) constraints [1]. Consequently, geo-distr
+
+[P 11] [正文2         ]
+       TEXT: Extending intra-DC RoCEv2 to WANs introduces severe challenges [3]. Increased round-trip times (RTT) and bandwidth-delay
+
+[P 12] [正文2         ]
+       TEXT: To overcome these bottlenecks, we propose a cross-plane lossless WAN architecture. The data plane leverages a Load-Store
+
+[P 13] [大1A         ]
+       TEXT: 2 Overall Architecture of the Lossless Transmission Mechanism and Multi-Dimensional Data-Network Synergy
+
+[P 14] [正文2         ]
+       TEXT: To address the extreme performance challenges imposed by AI computing services on wide-area networks (WANs) while satisf
+
+[P 15] [正文2         ]
+       TEXT: The proposed architecture consists of three tightly coupled layers, whose core design principle is the deep integration 
+
+[P 17] [Text        ]
+       TEXT: Fig. 1 Overall Architecture of the Mechanism
+
+[P 18] [正文2         ]
+       TEXT: The first layer is the Physical Network Layer (AI Router Data Plane), which establishes a highly flexible networking inf
+
+[P 19] [正文2         ]
+       TEXT: The second layer is the Service Connection Layer (AI Connection Layer), which leverages the IPv6 Extension Header framew
+
+[P 20] [正文2         ]
+       TEXT: The third layer is the Network Control Layer (AI Brain), which functions as the central intelligence of the WAN architec
+
+[P 21] [大1A         ]
+       TEXT: 3 Statistical Algorithm Innovation and Scheduling Theory Tailored for High-Speed NPU Hardware
+
+[P 22] [大1A         ]
+       TEXT: Under the severe environment of long-distance WAN transmission, resolving the congestion and hash collisions caused by e
+
+[P 23] [大1A下        ]
+       TEXT: 3.1 Hardware-Traffic Co-design of LSQ and Micro-cache Based on the ON/OFF Traffic Model
+
+[P 24] [正文2         ]
+       TEXT: While Count-Min Sketch is a well-established matrix-based approach for network traffic filtering [9], high-speed network
+
+[P 25] [正文2         ] [MATH]
+       TEXT: In distributed training, gradient synchronization mechanisms dominate network behavior. Assuming the model parameter siz
+
+[P 26] [正文2         ] [MATH]
+       TEXT: When consecutive burst packets with the same five-tuple identifier  arrive, the micro-cache first locally accumulates th
+
+[P 27] [正文2         ] [MATH]
+       TEXT: Through this co-design highly adapted to the AI ON/OFF burst characteristics, the system not only thoroughly resolves th
+
+[P 28] [大1A下        ]
+       TEXT: 3.2 Theoretical Boundary of Out-of-Order-Free Flowlet Scheduling and the UCMP Model
+
+[P 29] [First Paragraph]
+       TEXT: Once elephant flows are identified via the hardware-traffic co-design, the key challenge lies in segmenting them into fl
+
+[P 31] [Text        ]
+       TEXT: Fig. 2 Comparison of Load Balancing Schemas: ECMP vs Micro-flow Awareness
+
+[P 32] [正文2         ] [MATH]
+       TEXT: Multiple equal-cost or non-equal-cost paths in a WAN have significant delay differentials. Let the candidate path set be
+
+[P 33] [正文2         ] [MATH]
+       TEXT: The router’s NP chip continuously monitors the arrival timestamps of packets. Once the boundary condition of Equation (3
+
+[P 34] [正文2         ]
+       TEXT: By integrating network-side hardware processing with flowlet splitting boundaries, this mechanism distributes large flow
+
+[P 35] [大1A         ]
+       TEXT: 4. SRv6 Tenant-Level Backpressure Mechanism to Overcome Long RTTs
+
+[P 36] [First Paragraph]
+       TEXT: Traditional data center RDMA networks heavily rely on PFC mechanisms to achieve lossless transmission [15]. However, whe
+
+[P 37] [大1A下        ]
+       TEXT: 4.1 Backpressure Stability and BDP “Blind Mode” Modeling Under Long WAN Latencies
+
+[P 38] [First Paragraph] [MATH]
+       TEXT: In high-speed WANs, the long RTT significantly increases the BDP. We define the interval from when congestion occurs and
+
+[P 39] [正文2         ]
+       TEXT: By coupling in-network hardware processing with flowlet-splitting boundaries, our mechanism balances large flows across 
+
+[P 40] [大1A下        ]
+       TEXT: 4.2 In-band Signaling Architecture Based on SRv6 End.X.PFC
+
+[P 41] [正文2         ]
+       TEXT: To prevent deadlock propagation and maximize throughput, flow control must shift from coarse port-level to fine-grained 
+
+[P 42] [正文2         ]
+       TEXT: 1) Signaling Structure: Within the 128-bit End.X.PFC SID, the Locator encodes routing topology, while the Function and A
+
+[P 43] [正文2         ]
+       TEXT: 2) Reverse Traceability: Upon congestion, a downstream node pinpoints the exact upstream interface and queue by parsing 
+
+[P 44] [大1A下        ]
+       TEXT: 4.3 Fine-grained Tenant-Level Backpressure Algorithm and State Machine Implementation
+
+[P 45] [正文2         ]
+       TEXT: Building upon the signaling architecture, we implement a constant-time, bounded-state fine-grained backpressure algorith
+
+[P 46] [正文2         ]
+       TEXT: 1) Stream ID Management: At the WAN edge, incoming tenant traffic is assigned a globally unique Stream ID, mapping it to
+
+[P 47] [正文2         ] [MATH]
+       TEXT: 2) Congestion Detection: The downstream NPU monitors per-tenant queue occupancy (). An alarm triggers when  reaches a cr
+
+[P 48] [正文2         ]
+       TEXT: 3) Precision Flow Control Message (PFCM) Generation: Rather than flooding the link with standard IEEE 802.1Qbb PAUSE fra
+
+[P 49] [正文2         ]
+       TEXT: 4) Upstream Enforcement: Upon intercepting the End.X.PFC signal, the upstream device halts only the specific tenant's lo
+
+[P 50] [正文2         ]
+       TEXT: By elevating flow control from the Layer 2 MAC domain to the Layer 3 SRv6 logical slice domain, End.X.PFC isolates AI wo
+
+[P 51] [大1A         ]
+       TEXT: 5. Service Awareness and Slice Hard Isolation Based on APN and SRv6 Data-Network Synergy
+
+[P 52] [正文2         ]
+       TEXT: To meet the stringent requirements of data element circulation and ensure strict compliance, the mechanism deeply integr
+
+[P 53] [大1A下        ]
+       TEXT: 5.1 Business Semantic Awareness and Deep APN Encapsulation
+
+[P 54] [正文2         ]
+       TEXT: When business data flows enter the intelligent WAN edge, devices perform deep inspection of flow characteristics to accu
+
+[P 56] [Text        ]
+       TEXT: Fig. 3 APN6 Application-aware Encapsulation and Synergy Workflow
+
+[P 57] [大1A下        ]
+       TEXT: 5.2 Slice Sub-interface Hard Isolation Guarantee
+
+[P 58] [正文2         ]
+       TEXT: Traditional networks predominantly rely on soft isolation techniques, wherein best-effort traffic can inadvertently exha
+
+[P 59] [大1A下        ]
+       TEXT: 5.3 Compliant Routing and Data Fencing Based on APN
+
+[P 60] [正文2         ]
+       TEXT: In privacy protection scenarios, the APN ID functions as an identifier for data traversing the network. The control plat
+
+[P 61] [大1A         ]
+       TEXT: 6. Production Network Deployment and Multi-Dimensional Performance Evaluation
+
+[P 62] [正文2         ]
+       TEXT: To rigorously quantify the real-world performance of this mechanism under underlying algorithm optimization and data-net
+
+[P 63] [大1A下        ]
+       TEXT: 6.1 JCT and Model Training Computing Efficiency Evaluation
+
+[P 64] [正文2         ]
+       TEXT: In distributed AI training, the primary key performance indicator (KPI) of network efficiency is not bandwidth utilizati
+
+[P 65] [正文2         ]
+       TEXT: To objectively evaluate system carrying capacity under varying network conditions, this experiment selects three represe
+
+[P 66] [正文2         ]
+       TEXT: The evaluation framework defines three controlled experimental groups:
+
+[P 67] [正文2         ]
+       TEXT: 1) Local-DC: A same-rack, short-reach environment with RTT < 10μs and lossless transmission, representing an idealized i
+
+[P 68] [正文2         ]
+       TEXT: 2) Legacy WAN: A conventional wide-area network configuration employing host-side 5-tuple ECMP hash-based load balancing
+
+[P 69] [正文2         ]
+       TEXT: 3) Proposed Mechanism: A 100-km long-distance deployment that enables hardware-level Sketch-based micro-flow scheduling 
+
+[P 70] [表题          ]
+       TEXT: Table 1 Throughput and computing efficiency comparison of different scale large models (LLaMa/GPT) over a 100-km WAN
+
+[P 72] [正文2         ]
+       TEXT: The detailed experimental results in Table 1 indicate the following observations. For billion-parameter-scale models suc
+
+[P 73] [正文2         ]
+       TEXT: For ultra-large-scale models such as GPT-175B, the problem is further amplified by pronounced Incast traffic patterns du
+
+[P 74] [正文2         ]
+       TEXT: In contrast, when the proposed hardware scheduling and tenant-level backpressure mechanisms are fully enabled, the achie
+
+[P 75] [正文2         ]
+       TEXT: These results strongly demonstrate that the proposed network-side hardware–algorithm co-design effectively mitigates com
+
+[P 76] [大1A下        ]
+       TEXT: 6.2 Tail Latency and Microscopic Queue Depth Analysis
+
+[P 77] [正文2         ]
+       TEXT: In distributed training systems, the AI network performance is not governed by average latency but is instead dominated 
+
+[P 78] [正文2         ]
+       TEXT: In this experiment, we further analyze the microscopic queue occupancy and tail latency behavior of the WAN core aggrega
+
+[P 80] [Body Text   ]
+       TEXT: Table 2 Evaluation of link utilization, maximum queue depth, and P99 tail latency under polarized elephant flow impacts
+
+[P 82] [正文2         ]
+       TEXT: As shown in Table 2, conventional ECMP routing under heavy elephant-flow workloads causes rapid queue buildup on core li
+
+[P 83] [正文2         ]
+       TEXT: In contrast, by leveraging the in-network LSQ-Sketch matrix for millisecond-level dynamic flow slicing, our mechanism el
+
+[P 84] [Body Text   ]
+       TEXT: Finally, isolation stress tests validate the efficacy of AAN slice-based sub-interfaces. Even when injected background t
+
+[P 85] [大1A         ]
+       TEXT: 7. Conclusion and future work
+
+[P 86] [正文2         ]
+       TEXT: As distributed LLM training scales across wide-area networks, traditional best-effort IP architectures suffer from flow-
+
+[P 87] [正文2         ]
+       TEXT: To guarantee lossless transmission, we introduce a tenant-level elastic backpressure mechanism via SRv6 End.X.PFC in-ban
+
+[P 88] [Body Text   ]
+       TEXT: Future iterations will explore integrating Deep Reinforcement Learning (DRL) for autonomous forwarding-plane optimizatio
+
+[P 89] [1           ]
+       TEXT: Acknowledgements
+
+[P 90] [Normal      ]
+       TEXT: The authors would like to thank the Century College, Beijing University of Posts and Telecommunications for providing th
+
+[P 91] [大1A         ]
+       TEXT: References
+
+[P 92] [Normal      ]
+       TEXT: Narayanan D, Shoeybi M, Casper J, et al. Efficient large-scale language model training on GPU clusters using megatron-LM
+
+[P 93] [Normal      ]
+       TEXT: Hsieh K, Harlap A, Vijaykumar N, et al. Gaia: Geo-distributed machine learning approaching LAN speeds. Proceedings of th
+
+[P 94] [Normal      ]
+       TEXT: Guo C, Wu H, Tan K, et al. RDMA over commodity ethernet at scale. Proceedings of the ACM SIGCOMM 2016 Conference, Aug 22
+
+[P 95] [Normal      ]
+       TEXT: Mittal R, Lam V T, Dukkipati N, et al. TIMELY: RTT-based congestion control for the datacenter. Proceedings of the ACM S
+
+[P 96] [Normal      ]
+       TEXT: Liu Z, Bai W, Zhu H, et al. Congestion control for high-speed WANs. IEEE/ACM Transactions on Networking, 2020, 28(5): 21
+
+[P 97] [Normal      ]
+       TEXT: Al-Fares M, Loukissas A, Vahdat A. A scalable, commodity data center network architecture. ACM SIGCOMM Computer Communic
+
+[P 98] [Normal      ]
+       TEXT: Sapio A, Abdelmoniem A M, Anderson D, et al. Scaling distributed machine learning with in-network aggregation. Proceedin
+
+[P 99] [Normal      ]
+       TEXT: Zhang H, Chen M, Bai W, et al. HPCC: high precision congestion control. Proceedings of the ACM SIGCOMM 2019 Conference, 
+
+[P100] [Normal      ]
+       TEXT: Cormode G, Muthukrishnan S. An improved data stream summary: the count-min sketch and its applications. Journal of Algor
+
+[P101] [Normal      ]
+       TEXT: Chole S, Fingerhut A, Ma S, et al. DRMT: disaggregated programmable switching. Proceedings of the ACM SIGCOMM 2017 Confe
+
+[P102] [Normal      ]
+       TEXT: Dong P, Zheng W, Fang J, et al. SPArch: efficient architecture for sparse matrix multiplication. Proceedings of the 47th
+
+[P103] [Normal      ]
+       TEXT: Sergeev A, Del Balso M. Horovod: fast and easy distributed deep learning in TensorFlow. arXiv preprint arXiv:1802.05799,
+
+[P104] [Normal      ]
+       TEXT: Moshref M, Yu M, Govindan R, et al. DREAM: dynamic resource allocation for software-defined measurement. Proceedings of 
+
+[P105] [Normal      ]
+       TEXT: Kandula S, Katabi D, Sinha S, et al. Dynamic load balancing without packet reordering. ACM SIGCOMM Computer Communicatio
+
+[P106] [Normal      ]
+       TEXT: Stephens B, Cox A L, Singla A, et al. Practical DCB for improved data center networks. Proceedings of the IEEE INFOCOM 2
+
+[P107] [Normal      ]
+       TEXT: Lu G, Miao R, Xiong Y, et al. RoCEv2 with concurrency control. Proceedings of the ACM SIGCOMM 2022 Conference, Aug 22-26
+
+[P108] [Normal      ]
+       TEXT: Filsfils C, Camarillo P, Leddy J, et al. IPv6 segment routing. IETF RFC 8986, 2021
+
+[P109] [Normal      ]
+       TEXT: Li Z, Peng S, Voyer D, et al. Application-aware Networking (APN) framework. IETF Internet-Draft, 2022
+
+[P110] [Normal      ]
+       TEXT: Foukas X, Patounas G, Elmokashfi A, et al. Network slicing in 5G: Survey and challenges. IEEE Communications Magazine, 2
+
+[P111] [Normal      ]
+       TEXT: Valadarsky A, Schapira M, Shahaf D, et al. Learning to route. Proceedings of the 16th ACM Workshop on Hot Topics in Netw
+
