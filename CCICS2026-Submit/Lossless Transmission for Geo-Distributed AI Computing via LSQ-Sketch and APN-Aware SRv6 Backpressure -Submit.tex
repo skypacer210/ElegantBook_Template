@@ -132,22 +132,22 @@ V_{blind} = C \times RTT
 To quantitatively demonstrate the buffer implications under long WAN latencies, Table 1 summarizes the required blind-zone buffering across varying transmission distances and contrasts the operational behavior of standard PFC with our proposed End.X.PFC signaling.
 
 \begin{table}[h]
-\caption{\label{tab3}Comparison of buffer implications and operational behavior across varying transmission distances.}
+\caption{\label{tab3}BDP Blind-zone buffer requirements and backpressure overhead across varying WAN distances.}
 \begin{center}
 \lineup
-\scriptsize
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.9cm}
-                >{\centering\arraybackslash}p{1.1cm}
-                >{\centering\arraybackslash}p{1.4cm}
-                >{\raggedright\arraybackslash}p{1.6cm}
-                >{\raggedright\arraybackslash}p{3.5cm}
-                >{\raggedright\arraybackslash}p{4.0cm}@{}}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}
+                >{\centering\arraybackslash}p{1.2cm}
+                >{\centering\arraybackslash}p{1.3cm}
+                >{\raggedright\arraybackslash}p{1.7cm}
+                >{\raggedright\arraybackslash}p{3.7cm}
+                >{\raggedright\arraybackslash}p{3.9cm}@{}}
 \br
-\centering WAN Link Distance (km) & RTT ($\mu$s) & Link Bandwidth ($C$) & \centering Theoretical $V_{blind}$ (BDP) & \centering Traditional PFC Behavior & \centering Proposed SRv6 End.X.PFC ($Q_{threshold}$) \tabularnewline
+\centering WAN Link Distance (km) & RTT ($\mu$s) & Link Bandwidth & \centering Theoretical $V_{blind}$ (BDP) & \centering Traditional PFC Behavior & \centering Proposed SRv6 End.X.PFC ($Q_{threshold}$) \tabularnewline
 \mr
 0.1 (Intra-DC) & $\approx$10 & 100 Gbps & $\approx$125 KB & Port-level PAUSE, Head-of-Line (HoL) blocking risk & Flow-level exact backpressure ($<$128 KB) \\
 50 (Metro-WAN) & $\approx$500 & 100 Gbps & $\approx$6.25 MB & Buffer overflow / Deadlock propagation & Provisioned queue buffer ($\approx$6.5 MB), isolated tenant queue \\
-100 (Production WAN) & $\approx$1000 (1 ms) & 100 Gbps & $\approx$12.5 MB & Severe HoL blocking, victim flows stalled & Precise in-band End.X.PFC SID, zero packet loss, isolated halt \\
+100 (Production) & $\approx$1000 (1 ms) & 100 Gbps & $\approx$12.5 MB & Severe HoL blocking, victim flows stalled & Precise in-band End.X.PFC SID, zero packet loss, isolated halt \\
 500 (Cross-region) & $\approx$5000 (5 ms) & 100 Gbps & $\approx$62.5 MB & Frequent PFC storms \& fabric deadlock & Multi-hop End.X.PFC upstream regulation \\
 \br
 \end{tabular}
